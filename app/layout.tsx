@@ -21,8 +21,12 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
           rel="stylesheet"
         />
+        
       </head>
-      <body>{children}</body>
+      <body>{children}
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      </body>
     </html>
   );
 }
