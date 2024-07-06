@@ -7,6 +7,7 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    
     extend: {
       
       keyframes: {
@@ -30,6 +31,7 @@ const config: Config = {
       },
       fontFamily:{
         righteous: ["Righteous", "sans-serif"],
+        impact:["impact","sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
         impact: ["Impact", "sans-serif"],
       },
@@ -39,6 +41,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+     
     },
   },
   plugins: [],
