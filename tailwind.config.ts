@@ -1,8 +1,5 @@
 import type { Config } from "tailwindcss";
 
-
-
-
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,7 +11,6 @@ const config: Config = {
     extend: {
       
       keyframes: {
-        
         meteor: {
           "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
           "70%": { opacity: "1" },
@@ -31,11 +27,13 @@ const config: Config = {
       animation: {
         fadeIn: 'fadeIn 1.5s ease-in-out',
         "meteor-effect": "meteor 5s linear infinite",
+        
       },
       fontFamily:{
         righteous: ["Righteous", "sans-serif"],
         impact:["impact","sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        impact: ["Impact", "sans-serif"],
       },
       
       backgroundImage: {

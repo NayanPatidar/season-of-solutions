@@ -6,3 +6,8 @@
     font-family: 'impact';
     src: url(../public/Impact-Font/impact.ttf);
 }
+@layer base {
+  main {
+    @apply scroll-smooth;
+  }
+}
