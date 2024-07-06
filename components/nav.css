@@ -1,32 +1,38 @@
-.grad{
-    background: conic-gradient(from 90deg, #416891 18%, #DCB841 38%, #D66F4E 54%, #000000 100%);
+.grad {
+  background: conic-gradient(
+    from 90deg,
+    #416891 30%,
+    #dcb841 38%,
+    #d66f4e 54%,
+    #11496f 100%
+  );
 }
 
-@keyframes under{
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-.under{
-    position: relative;
-}
-
-.under::after{
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 2px;
+@keyframes under {
+  from {
     width: 0;
-    background-color: white; /* Color of the underline */
-    transition: width 0.3s ease-in-out;
-    /* Animation for smooth underline effect */
+  }
+  to {
+    width: 100%;
+  }
 }
 
-.under:hover::after{
-    width: 100%;
+.under {
+  position: relative;
+}
+
+.under::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: white; /* Color of the underline */
+  transition: width 0.3s ease-in-out;
+  /* Animation for smooth underline effect */
+}
+
+.under:hover::after {
+  width: 100%;
 }
