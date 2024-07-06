@@ -2,11 +2,12 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
-import "./grad.css"
+import "./nav.css"
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     const sections = [
         { href: "#home", name: "Home" },
@@ -16,8 +17,13 @@ const Header = () => {
     ];
 
     useEffect(() => {
-        const handleClickOutside = () => {
-            if (dropdownRef.current) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target as Node) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target as Node)
+            ) {
                 setIsOpen(false);
             }
         };
@@ -30,7 +36,7 @@ const Header = () => {
 
     return (
         <>
-            <div className="w-full mt-32 z-10 bg-black sticky top-0 text-white rounded-full p-1 flex items-center gdsc-grad">
+            <div className="w-full mt-32 z-10 bg-black sticky top-0 text-white rounded-full p-1 flex items-center grad">
                 <div className="w-full bg-black top-0 text-white border rounded-full p-4 flex items-center justify-between">
                     <Image
                         src="/logo.svg"
@@ -40,15 +46,19 @@ const Header = () => {
                         height={10}
                     />
 
-                    <button className="block lg:hidden p-2 focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
+                    <button
+                        ref={buttonRef}
+                        className="block lg:hidden p-2 focus:outline-none"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
 
-                    <div className={`font-montserrat lg:pr-6 lg:flex lg:items-center lg:space-x-16 ${isOpen ? "hidden" : "hidden"} lg:block`}>
+                    <div className={`font-montserrat lg:pr-6 lg:flex lg:items-center lg:space-x-16 ${isOpen ? "hidden" : "hidden"}`}>
                         {sections.map(link => (
-                            <Link key={link.href} href={link.href} className="no-underline hover:underline">{link.name}</Link>
+                            <Link key={link.href} href={link.href} className="under">{link.name}</Link>
                         ))}
                     </div>
 
@@ -58,7 +68,7 @@ const Header = () => {
                             className="absolute top-16 left-0 w-full border text-white bg-black rounded-md shadow-lg z-20 lg:hidden"
                         >
                             {sections.map(link => (
-                                <Link key={link.href} href={link.href} className="font-montserrat block px-4 py-2 hover:bg-gray-200 hover:text-black" onClick={() => setIsOpen(false)}>
+                                <Link key={link.href} href={link.href} className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300" onClick={() => setIsOpen(false)}>
                                     {link.name}
                                 </Link>
                             ))}

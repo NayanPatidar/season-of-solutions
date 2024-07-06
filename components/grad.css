@@ -1,7 +1,0 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
- */
-.gdsc-grad {
-    background: conic-gradient(from 90deg, #416891 18%, #DCB841 38%, #D66F4E 54%, #000000 100%);
-}
