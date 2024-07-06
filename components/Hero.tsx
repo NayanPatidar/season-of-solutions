@@ -10,7 +10,10 @@ const words =
 
 const Hero = () => {
   return (
-    <div className="animate-fadeIn h-screen flex flex-col justify-center pb-20  font-righteous text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFE] to-[#8B8B8B] ">
+    <div
+      id="home"
+      className="animate-fadeIn h-screen flex flex-col justify-center pb-20  font-righteous text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFE] to-[#8B8B8B] "
+    >
       <div className="absolute z-0 top-5 mx-auto ">
         <Meteors number={20} />
       </div>
@@ -34,8 +37,11 @@ const Hero = () => {
       </div>
       <TextGenerateEffect words={words}></TextGenerateEffect>
       <div className="flex justify-center md:justify-end mt-10 md:mr-28 text-xl">
-        <button className="p-[2px] absolute mr-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#ed6a42] to-[#e5734d] rounded-full" />
+        <button
+          onClick={() => (window.location.href = "/register")}
+          className="p-[2px] absolute mr-auto"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-[#e16f4c] to-[#2a829f] rounded-full" />
           <div className="px-8 py-4  bg-black rounded-[30px]  relative group transition duration-300 ease-in-out text-white hover:bg-transparent hover:text-[1.5rem]">
             Register now
             <MdArrowOutward className="absolute right-2 top-2  group-hover:animate-aurora" />

@@ -31,6 +31,7 @@ const config: Config = {
       fontFamily:{
         righteous: ["Righteous", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        impact: ["Impact", "sans-serif"],
       },
       
       backgroundImage: {
