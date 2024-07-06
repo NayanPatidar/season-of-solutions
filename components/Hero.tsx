@@ -22,6 +22,13 @@ const Hero = () => {
         width={1000}
         height={1000}
       ></Image>
+      <Image
+        src="/hero-line.png"
+        className="w-full h-full object-cover absolute p-0 m-0 left-0 md:-top-44 lg:top-0 "
+        alt="/"
+        width={1000}
+        height={1000}
+      ></Image>
       <div className="font-righteous md:mb-10 sm:8xl text-[3.7rem] md:text-[7rem]  lg:text-[7.9rem] text-wrap  md:leading-[150px]">
         SEASON OF SOLUTIONS
       </div>
