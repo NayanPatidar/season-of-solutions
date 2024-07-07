@@ -21,15 +21,16 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
           rel="stylesheet"
         />
-        
+
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body>{children}
-      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-      <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <body>
+        {children}
+        <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" async />
+        <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" async />
       </body>
     </html>
   );

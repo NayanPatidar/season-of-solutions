@@ -33,7 +33,6 @@ const config: Config = {
         righteous: ["Righteous", "sans-serif"],
         impact:["impact","sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
-        impact: ["Impact", "sans-serif"],
       },
       
       backgroundImage: {
