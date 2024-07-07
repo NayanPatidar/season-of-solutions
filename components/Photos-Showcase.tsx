@@ -87,39 +87,6 @@ const ImageContainer = styled.div`
     opacity: 1;
   }
 `;
-<style>
-  .clickable-image {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  .clickable-image img {
-    width: 200px;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .clickable-image:hover img {
-    transform: scale(1.1);
-  }
-
-  .clickable-image .description {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .clickable-image:hover .description {
-    opacity: 1;
-  }
-</style>
 
 // Showcase component
 const Showcase = () => {
