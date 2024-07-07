@@ -9,27 +9,6 @@ const StyledShowcase = styled.div`
   align-items: center;
   height: 100vh;
   background-color: #000;
-
-  .image-container {
-    margin: 0 10px;
-    transform-origin: center;
-  }
-
-  .image-container:nth-child(1) {
-    transform: rotate(-10deg);
-  }
-  .image-container:nth-child(2) {
-    transform: rotate(5deg);
-  }
-  .image-container:nth-child(3) {
-    transform: rotate(-5deg);
-  }
-  .image-container:nth-child(4) {
-    transform: rotate(10deg);
-  }
-  .image-container:nth-child(5) {
-    transform: rotate(-7deg);
-  }
 `;
 
 const Showcase = () => {
@@ -40,20 +19,20 @@ const Showcase = () => {
       </span>
       <div className="flex flex-row w-full pt-10">
         <StyledShowcase>
-          <div className="image-1">
-            <Image src="/season-of-solutions/DSC00789.png" alt="Image 1" width={300} height={300} />
+          <div className="image-container">
+            <Image src="/season-of-solutions/public/team/1.png" alt="Image 1"  width={300} height={300}/>
           </div>
-          <div className="image-2">
-            <Image src="/path/to/image2.jpg" alt="Image 2" width={300} height={300} />
+          <div className="image-container">
+            <Image src="/season-of-solutions/public/team/2.png" alt="Image 2"  width={300} height={300}/>
           </div>
-          <div className="image-3">
-            <Image src="/path/to/image3.jpg" alt="Image 3" width={300} height={300} />
+          <div className="image-container">
+            <Image src="/season-of-solutions/public/team/3.png" alt="Image 3"   width={300} height={300}/>
           </div>
-          <div className="image-4">
-            <Image src="/path/to/image4.jpg" alt="Image 4" width={300} height={300} />
+          <div className="image-container">
+            <Image src="/season-of-solutions/public/team/4.png" alt="Image 4"   width={300} height={300}/>
           </div>
-          <div className="image-5">
-            <Image src="/path/to/image5.jpg" alt="Image 5" width={300} height={300} />
+          <div className="image-container">
+            <Image src="/season-of-solutions/public/team/5.png" alt="Image 5"   width={300} height={300}/>
           </div>
         </StyledShowcase>
       </div>
