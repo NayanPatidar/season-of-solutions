@@ -9,6 +9,9 @@ const config: Config = {
   theme: {
     
     extend: {
+      colors: {
+        'brown-800': '#8C1515', // Example brown color, adjust as needed
+      },
       
       keyframes: {
         meteor: {
