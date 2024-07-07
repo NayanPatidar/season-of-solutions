@@ -12,27 +12,18 @@ const Hero = () => {
   return (
     <div
       id="home"
-      className="animate-fadeIn h-screen flex flex-col justify-center pb-20  font-righteous text-transparent bg-clip-text bg-gradient-to-r from-[#FEFEFE] to-[#8B8B8B] "
+      className="animate-fadeIn h-screen flex flex-col justify-center pb-20  font-righteous text-transparent  pl-2"
+      style={{
+        backgroundImage: "url('/hero-stars.png'), url('/hero-line.png')",
+        backgroundPosition: "top left, top left",
+        backgroundSize: "cover, cover",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="absolute z-0 top-5 mx-auto ">
         <Meteors number={20} />
       </div>
-
-      <Image
-        src="/hero-stars.png"
-        className="w-full h-full object-cover absolute p-0 m-0 left-0 top-0"
-        alt="/"
-        width={1000}
-        height={1000}
-      ></Image>
-      <Image
-        src="/hero-line.png"
-        className="w-full h-full object-cover absolute p-0 m-0 left-0 md:-top-44 lg:top-0 "
-        alt="/"
-        width={1000}
-        height={1000}
-      ></Image>
-      <div className="font-righteous md:mb-10 sm:8xl text-[3.7rem] md:text-[7rem]  lg:text-[7.9rem] text-wrap  md:leading-[150px]">
+      <div className="font-righteous md:mb-10 sm:8xl text-[3.7rem] md:text-[7rem]  lg:text-[7.9rem] text-wrap  md:leading-[150px] bg-clip-text bg-gradient-to-r from-[#FEFEFE] to-[#8B8B8B]">
         SEASON OF SOLUTIONS
       </div>
       <TextGenerateEffect words={words}></TextGenerateEffect>

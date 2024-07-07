@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'impact';
-    src: url(../public/Impact-Font/impact.ttf);
+  font-family: "impact";
+  src: url(../public/Impact-Font/impact.ttf);
 }
 @layer base {
   main {
     @apply scroll-smooth;
   }
+}
+
+.TimelineDates {
+  background: linear-gradient(to bottom, #ffffff, #999999);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
