@@ -1,7 +1,7 @@
 "use client";
 // Import necessary dependencies
-import React, { useState } from 'react';
-import ReactDOM from "react-dom";
+import React from 'react';
+import { CardContainer } from "./ui/Background-gradient";
 import styled, { keyframes } from 'styled-components';
 import Image from 'next/image';
 
@@ -12,6 +12,25 @@ const rotateAnimation = keyframes`
   }
   to {
     transform: rotate(360deg);
+  }
+`;
+
+// Keyframes animation for border
+const borderAnimation = keyframes`
+  0% {
+    border-color: #032146;
+  }
+  25% {
+    border-color: #C3F2FF;
+  }
+  50% {
+    border-color: #b00;
+  }
+  75% {
+    border-color: #C3F2FF;
+  }
+  100% {
+    border-color: #032146;
   }
 `;
 
@@ -40,7 +59,6 @@ const TextContainer = styled.div<{ font?: string; justify?: string }>`
   text-align: ${({ justify }) => justify || 'left'};
 `;
 
-
 const ImageGrid = styled.div`
   display: flex;
   flex-wrap: nowrap; /* Change this to nowrap for a single line */
@@ -53,6 +71,8 @@ const ImageContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.5s ease;
+  border: 2px solid transparent; /* Initial border */
+  animation: ${borderAnimation} 5s linear infinite; /* Add border animation */
 
   &:hover {
     transform: scale(1.1);
@@ -90,33 +110,29 @@ const ImageContainer = styled.div`
 
 // Showcase component
 const Showcase = () => {
-  const [angle, setAngle] = useState('0deg');
-
   return (
     <StyledShowcase>
       <h1 className="font-impact text-white text-lg mb-5 sm:mb-10 lg:mb-15 sm:text-3xl lg:text-5xl xl:text-7xl xl:mb-20">SHOWCASE</h1>
       <TextContainer font="font-futura" justify="justify">
-  <span>
-    Welcome to the Google Developer Student Club (GDSC)! We are a vibrant and dynamic community of students who share a passion for technology, innovation, and collaboration. Our mission is to bridge the gap between theory and practice by providing hands-on learning opportunities and events that empower students to develop their technical skills and apply them to real-world challenges.
-    <br />
-    At GDSC, we offer comprehensive workshops, coding sessions, and project-based learning to help students dive into the latest technologies and gain practical experience. Whether you're a beginner looking to start your journey in tech or an experienced coder aiming to expand your knowledge, our club offers a wide range of resources and activities to support your learning goals.
-    Together, let's shape the future of technology!
-  </span>
-    </TextContainer>
+        <span>
+          Welcome to the Google Developer Student Club (GDSC)! We are a vibrant and dynamic community of students who share a passion for technology, innovation, and collaboration. Our mission is to bridge the gap between theory and practice by providing hands-on learning opportunities and events that empower students to develop their technical skills and apply them to real-world challenges.
+          <br />
+          At GDSC, we offer comprehensive workshops, coding sessions, and project-based learning to help students dive into the latest technologies and gain practical experience. Whether you're a beginner looking to start your journey in tech or an experienced coder aiming to expand your knowledge, our club offers a wide range of resources and activities to support your learning goals.
+          Together, let's shape the future of technology!
+        </span>
+      </TextContainer>
       <ImageGrid>
         {[1, 2, 3, 4, 5].map((num) => (
-          <ImageContainer
-            key={num}
-            onMouseEnter={() => setAngle('360deg')}
-            onMouseLeave={() => setAngle('0deg')}
-          >
-        <div className="clickable-image">
-            <Image src={`/team/${num}.png`} alt={`Image ${num}`} width={500} height={500} />
-            <div className="description">
-                <p>Beautiful description goes here</p>
-            </div>
-        </div>
-          </ImageContainer>
+          <CardContainer key={num}>
+            <ImageContainer>
+              <div className="clickable-image">
+                <Image src={`/team/${num}.png`} alt={`Image ${num}`} width={500} height={500} />
+                <div className="description">
+                  <p>Beautiful description goes here</p>
+                </div>
+              </div>
+            </ImageContainer>
+          </CardContainer>
         ))}
       </ImageGrid>
     </StyledShowcase>
