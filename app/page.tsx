@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import { FaqWrapper } from "@/components/faqcomp/FaqWrapper";
 import Script from "next/script";
 import Timeline from "@/components/Timeline";
+import Showcase from "@/components/Photos-Showcase";
+
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
         <Hero />
       </div>
       <Timeline />
+      <Showcase />
       <FaqWrapper />
       <Footer />
     </main>
