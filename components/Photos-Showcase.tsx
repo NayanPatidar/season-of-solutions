@@ -27,7 +27,6 @@ const StyledShowcase = styled.div`
   background-color: #000;
   padding: 2rem;
 `;
-
 const TextContainer = styled.div<{ font?: string; justify?: string }>`
   text-align: center;
   color: white;
@@ -47,13 +46,16 @@ const ImageGrid = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-bottom: 2rem;
+  max-width: 80rem;
 
-  @media (max-width: 768px) {
+ @media (max-width: 768px) {
     flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: center;
+    gap: 0.2rem;
     margin-bottom: 1rem;
+    padding: 0 1rem;
   }
 `;
 
@@ -62,18 +64,19 @@ const ImageContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.5s ease;
-  border: 2px solid transparent; 
-  flex: 1 1 20%; 
-  
+  border: 2px solid transparent;
+  flex: 1 1 20%;
+
   @media (max-width: 768px) {
-    flex: 1 1 40%;
+    flex: 1 1 45%;
+    max-width: 55%;
   }
 
   &:hover {
     transform: scale(1.1);
   }
 
-  &::before{
+  &::before {
     content: "";
     position: absolute;
     inset: -0.2rem;
@@ -120,6 +123,7 @@ const ImageContainer = styled.div`
     border-radius: 5px;
     opacity: 0;
     transition: opacity 0.5s ease;
+
     @media (max-width: 768px) {
       bottom: 5px;
       padding: 3px 5px;
@@ -146,8 +150,6 @@ const ImageCard = ({ src, alt, description }: { src: string, alt: string, descri
   </CardContainer>
 );
 
-// Responsive Styled Component for Text Section
-
 const ResponsiveFlexContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
@@ -157,34 +159,37 @@ const ResponsiveFlexContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 const AnimatedTextContainer = styled.div`
   display: flex;
+  align-items: center;
   overflow: hidden;
-  white-space: nowrap; 
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
+  white-space: nowrap;
 `;
 
 const AnimatedText = styled.div`
-  display: inline-block;
-  font-size: clamp(3rem, 10vw, 10rem); 
+  display: flex;
+  align-items: center;
+  font-size: clamp(3rem, 10vw, 10rem);
   font-weight: normal;
   font-family: 'Impact';
-  color: #00b0ff; 
-  animation: ${slideAnimation} 10s linear infinite; 
-
-  &:not(:last-child) {
-    margin-right: 40px; 
-  }
+  color: #00b0ff;
+  animation: ${slideAnimation} 10s linear infinite;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px; /* Adjust the margin as needed */
   }
 `;
 
@@ -193,9 +198,10 @@ const Showcase = () => {
   return (
     <StyledShowcase>
       <h1 className="font-impact text-white text-lg mb-5 sm:mb-10 lg:mb-15 sm:text-3xl lg:text-5xl xl:text-7xl xl:mb-20">SHOWCASE</h1>
-      <TextContainer font="font-futura" justify="justify">
+      <TextContainer  font="font-futura" justify="justify">
         <span>
           Welcome to the Google Developer Student Club (GDSC)! We are a vibrant and dynamic community of students who share a passion for technology, innovation, and collaboration. Our mission is to bridge the gap between theory and practice by providing hands-on learning opportunities and events that empower students to develop their technical skills and apply them to real-world challenges.
+          <br />
           <br />
           At GDSC, we offer comprehensive workshops, coding sessions, and project-based learning to help students dive into the latest technologies and gain practical experience. Whether you're a beginner looking to start your journey in tech or an experienced coder aiming to expand your knowledge, our club offers a wide range of resources and activities to support your learning goals.
           Together, let's shape the future of technology!
@@ -209,10 +215,11 @@ const Showcase = () => {
         <ImageCard src="/team/5.svg" alt="Image 5" description="PARTICIPATE" />
       </ImageGrid>
 
-      {/* Responsive Section */}
       <ResponsiveFlexContainer>
         <AnimatedTextContainer>
-          <AnimatedText>LEARN CONNECT GROW</AnimatedText>
+          <AnimatedText>
+            LEARN <img src="/team/points.svg" alt="Subtract" /> CONNECT <img src="/team/points.svg" alt="Subtract" /> GROW
+          </AnimatedText>
         </AnimatedTextContainer>
       </ResponsiveFlexContainer>
     </StyledShowcase>
