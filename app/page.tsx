@@ -8,7 +8,9 @@ import Timeline from "@/components/Timeline";
 export default function Home() {
   return (
     <main className="relative  flex bg-black flex-col items-center justify-center overflow-x-hidden mx-auto h-full w-full">
-      <Navbar />
+      <div className=" px-4 w-full pt-4">
+        <Navbar />
+      </div>
       <div className="w-full h-screen">
         <Script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></Script>
         <Script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></Script>

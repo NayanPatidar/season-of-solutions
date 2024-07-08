@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-black  opacity-100 text-white">
+    <footer className="bg-gradient-to-r from-black  opacity-100 text-white w-full px-2 sm:px-6 pb-4">
       <div className="relative">
         <Image
           src="/footer-bg.svg"

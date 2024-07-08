@@ -74,7 +74,7 @@ export const FaqWrapper = () => {
     ];
 
     return (
-        <div className="flex flex-col items-center  mb-32">
+        <div className="flex flex-col items-center  mb-32 p-8 sm:p-2">
             <h1 className="font-impact text-white text-lg mb-5 sm:mb-10 lg:mb-15 sm:text-3xl lg:text-5xl xl:text-7xl xl:mb-20">FREQUENTLY ASKED QUESTIONS</h1>
             {faqs.map((faq, index) => (
                 <Faq key={index} question={faq.question} answer={faq.answer} id={faq.id} />
