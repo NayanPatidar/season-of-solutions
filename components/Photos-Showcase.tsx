@@ -147,6 +147,7 @@ const ImageCard = ({ src, alt, description }: { src: string, alt: string, descri
 );
 
 // Responsive Styled Component for Text Section
+
 const ResponsiveFlexContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
