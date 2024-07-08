@@ -1,9 +1,20 @@
-"use client";
-// Import necessary dependencies
 import React from 'react';
 import { CardContainer } from "./ui/3d-card";
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Image from 'next/image';
+
+// Keyframes for animation
+const slideAnimation = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
 
 // Styled components
 const StyledShowcase = styled.div`
@@ -19,22 +30,30 @@ const StyledShowcase = styled.div`
 const TextContainer = styled.div<{ font?: string; justify?: string }>`
   text-align: center;
   color: white;
-  margin-bottom: 7rem;
+  margin-bottom: 2rem;
   font-family: Futura, sans-serif; /* Update font-family as needed */
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
-  line-height: 1.2;
+  line-height: 1.66;
   font-size: 1.4rem;
   max-width: 80rem;
   text-transform: capitalize;
   text-align: ${({ justify }) => justify || 'left'};
+  padding: 0 1rem; /* Adding padding here */
 `;
 
 const ImageGrid = styled.div`
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping to make it responsive */
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -42,20 +61,28 @@ const ImageContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.5s ease;
-  border: 2px solid transparent; /* Initial border */
-  flex: 1 1 20%; /* Responsive flex basis */
+  border: 2px solid transparent; 
+  flex: 1 1 20%; 
+  
+  @media (max-width: 768px) {
+    flex: 1 1 40%;
+  }
 
   &:hover {
     transform: scale(1.1);
   }
 
-  &::before {
+  &::before{
     content: "";
     position: absolute;
     inset: -0.2rem;
     z-index: -1;
     background: linear-gradient(var(--angle), #032146, #C3F2FF, #b00);
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
 
   &::after {
@@ -92,10 +119,70 @@ const ImageContainer = styled.div`
     border-radius: 5px;
     opacity: 0;
     transition: opacity 0.5s ease;
+    @media (max-width: 768px) {
+      bottom: 5px;
+      padding: 3px 5px;
+      font-size: 0.8rem;
+    }
   }
 
   &:hover .description {
     opacity: 1;
+  }
+`;
+
+// Individual Image Components
+const ImageCard = ({ src, alt, description }: { src: string, alt: string, description: string }) => (
+  <CardContainer>
+    <ImageContainer>
+      <div className="clickable-image">
+        <Image src={src} alt={alt} layout="responsive" width={100} height={100} />
+        <div className="description">
+          <p>{description}</p>
+        </div>
+      </div>
+    </ImageContainer>
+  </CardContainer>
+);
+
+// Responsive Styled Component for Text Section
+const ResponsiveFlexContainer = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+`;
+
+const AnimatedTextContainer = styled.div`
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap; 
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const AnimatedText = styled.div`
+  display: inline-block;
+  font-size: clamp(3rem, 10vw, 10rem); 
+  font-weight: normal;
+  font-family: 'Impact';
+  color: #00b0ff; 
+  animation: ${slideAnimation} 10s linear infinite; 
+
+  &:not(:last-child) {
+    margin-right: 40px; 
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -113,19 +200,19 @@ const Showcase = () => {
         </span>
       </TextContainer>
       <ImageGrid>
-        {[1, 2, 3, 4, 5].map((num) => (
-          <CardContainer key={num}>
-            <ImageContainer>
-              <div className="clickable-image">
-                <Image src={`/team/${num}.png`} alt={`Image ${num}`} layout="responsive" width={100} height={150} />
-                <div className="description">
-                  <p>Beautiful description goes here</p>
-                </div>
-              </div>
-            </ImageContainer>
-          </CardContainer>
-        ))}
+        <ImageCard src="/team/1.png" alt="Image 1" description="Description for Image 1" />
+        <ImageCard src="/team/2.png" alt="Image 2" description="Description for Image 2" />
+        <ImageCard src="/team/3.png" alt="Image 3" description="Description for Image 3" />
+        <ImageCard src="/team/4.png" alt="Image 4" description="Description for Image 4" />
+        <ImageCard src="/team/5.png" alt="Image 5" description="Description for Image 5" />
       </ImageGrid>
+
+      {/* Responsive Section */}
+      <ResponsiveFlexContainer>
+        <AnimatedTextContainer>
+          <AnimatedText>LEARN CONNECT GROW</AnimatedText>
+        </AnimatedTextContainer>
+      </ResponsiveFlexContainer>
     </StyledShowcase>
   );
 };
