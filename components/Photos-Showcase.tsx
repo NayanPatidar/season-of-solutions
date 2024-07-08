@@ -2,37 +2,8 @@
 // Import necessary dependencies
 import React from 'react';
 import { CardContainer } from "./ui/3d-card";
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Image from 'next/image';
-
-// Keyframes animation for rotating images
-const rotateAnimation = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-// Keyframes animation for border
-const borderAnimation = keyframes`
-  0% {
-    border-color: #032146;
-  }
-  25% {
-    border-color: #C3F2FF;
-  }
-  50% {
-    border-color: #b00;
-  }
-  75% {
-    border-color: #C3F2FF;
-  }
-  100% {
-    border-color: #032146;
-  }
-`;
 
 // Styled components
 const StyledShowcase = styled.div`
@@ -40,7 +11,7 @@ const StyledShowcase = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: #000;
   padding: 2rem;
 `;
@@ -61,7 +32,7 @@ const TextContainer = styled.div<{ font?: string; justify?: string }>`
 
 const ImageGrid = styled.div`
   display: flex;
-  flex-wrap: nowrap; /* Change this to nowrap for a single line */
+  flex-wrap: wrap; /* Allow wrapping to make it responsive */
   justify-content: center;
   gap: 1rem;
 `;
@@ -72,14 +43,10 @@ const ImageContainer = styled.div`
   cursor: pointer;
   transition: transform 0.5s ease;
   border: 2px solid transparent; /* Initial border */
-  animation: ${borderAnimation} 5s linear infinite; /* Add border animation */
+  flex: 1 1 20%; /* Responsive flex basis */
 
   &:hover {
     transform: scale(1.1);
-  }
-
-  &:hover::before {
-    animation: ${rotateAnimation} 5s linear infinite;
   }
 
   &::before {
@@ -89,7 +56,6 @@ const ImageContainer = styled.div`
     z-index: -1;
     background: linear-gradient(var(--angle), #032146, #C3F2FF, #b00);
     background-position: center;
-    animation: none;
   }
 
   &::after {
@@ -104,6 +70,31 @@ const ImageContainer = styled.div`
   }
 
   &:hover::after {
+    opacity: 1;
+  }
+
+  .clickable-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .description {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover .description {
     opacity: 1;
   }
 `;
@@ -126,7 +117,7 @@ const Showcase = () => {
           <CardContainer key={num}>
             <ImageContainer>
               <div className="clickable-image">
-                <Image src={`/team/${num}.png`} alt={`Image ${num}`} width={500} height={500} />
+                <Image src={`/team/${num}.png`} alt={`Image ${num}`} layout="responsive" width={100} height={150} />
                 <div className="description">
                   <p>Beautiful description goes here</p>
                 </div>
