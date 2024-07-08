@@ -202,11 +202,11 @@ const Showcase = () => {
         </span>
       </TextContainer>
       <ImageGrid>
-        <ImageCard src="/team/1.png" alt="Image 1" description="LEARN" />
-        <ImageCard src="/team/2.png" alt="Image 2" description="CONNECT" />
-        <ImageCard src="/team/3.png" alt="Image 3" description="GROW" />
-        <ImageCard src="/team/4.png" alt="Image 4" description="SHARE" />
-        <ImageCard src="/team/5.png" alt="Image 5" description="PARTICIPATE" />
+        <ImageCard src="/team/1.svg" alt="Image 1" description="LEARN" />
+        <ImageCard src="/team/2.svg" alt="Image 2" description="CONNECT" />
+        <ImageCard src="/team/3.svg" alt="Image 3" description="GROW" />
+        <ImageCard src="/team/4.svg" alt="Image 4" description="SHARE" />
+        <ImageCard src="/team/5.svg" alt="Image 5" description="PARTICIPATE" />
       </ImageGrid>
 
       {/* Responsive Section */}
