@@ -1,31 +1,3 @@
-// "use client";
-// import React from 'react'
-// import { Faq } from './Faq'
-
-// export const FaqWrapper = () => {
-
-//     const faqs=[
-//         {
-//             question:" What is the Season of Solutions?",
-//             answer:"Season of Solutions is a month-long innovation challenge organized by the GDSC Club, designed to take participants through the journey of ideation to execution. Participants will brainstorm ideas, build prototypes, and present their final projects to a panel of judges."
-//         },
-//         {
-//             question:" What is the Season of Solutions?",
-//             answer:"Season of Solutions is a month-long innovation challenge organized by the GDSC Club, designed to take participants through the journey of ideation to execution. Participants will brainstorm ideas, build prototypes, and present their final projects to a panel of judges."
-//         },
-//         {
-//             question:" What is the Season of Solutions?",
-//             answer:"Season of Solutions is a month-long innovation challenge organized by the GDSC Club, designed to take participants through the journey of ideation to execution. Participants will brainstorm ideas, build prototypes, and present their final projects to a panel of judges."
-//         },
-//     ]
-//   return (
-//     <div>
-//         {faqs.map((faq,index) => (
-//                             <Faq ={faq.question} answer={faqs.answer}/>
-//                         ))}
-//     </div>
-//   )
-// }
 "use client"
 import React, { useState } from "react";
 import { Faq } from "./Faq";
