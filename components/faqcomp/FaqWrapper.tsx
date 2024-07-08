@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Faq } from "./Faq";
 
@@ -15,7 +15,7 @@ export const FaqWrapper = () => {
       id: 2,
       question: "What are the phases of the event?",
       answer: [
-        "Ideation Phase:Participants brainstorm and develop innovative ideas.",
+        "Ideation Phase: Participants brainstorm and develop innovative ideas.",
         "Prototyping Phase: Participants build and refine their prototypes in the Protolab.",
         "Launchpad Phase: Participants showcase their innovations and present them to a panel of judges.",
       ],
@@ -52,10 +52,10 @@ export const FaqWrapper = () => {
       ],
     },
   ];
-  
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  function handleclick(index:number){
-    setActiveIndex(activeIndex===index?null:index);
+  function handleclick(index: number) {
+    setActiveIndex(activeIndex === index ? null : index);
   }
   return (
     <div id="faq" className="flex flex-col items-center  mb-32 p-8 sm:p-2">
@@ -67,8 +67,10 @@ export const FaqWrapper = () => {
           key={index}
           question={faq.question}
           answer={faq.answer}
-          isActive={activeIndex===index} 
-          onclick={()=>{handleclick(index)}}
+          isActive={activeIndex === index}
+          onclick={() => {
+            handleclick(index);
+          }}
           id={faq.id}
         />
       ))}
