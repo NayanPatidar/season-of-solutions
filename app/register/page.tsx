@@ -3,6 +3,7 @@ import RegistrationForm from "@/components/registration/RegistrationForm";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+
 export default function register() {
   return (
     <div className="relative min-h-screen bg-black p-10">

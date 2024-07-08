@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { CardContainer } from "./ui/3d-card";
 import styled, { keyframes } from 'styled-components';
@@ -200,11 +201,11 @@ const Showcase = () => {
         </span>
       </TextContainer>
       <ImageGrid>
-        <ImageCard src="/team/1.png" alt="Image 1" description="Description for Image 1" />
-        <ImageCard src="/team/2.png" alt="Image 2" description="Description for Image 2" />
-        <ImageCard src="/team/3.png" alt="Image 3" description="Description for Image 3" />
-        <ImageCard src="/team/4.png" alt="Image 4" description="Description for Image 4" />
-        <ImageCard src="/team/5.png" alt="Image 5" description="Description for Image 5" />
+        <ImageCard src="/team/1.png" alt="Image 1" description="LEARN" />
+        <ImageCard src="/team/2.png" alt="Image 2" description="CONNECT" />
+        <ImageCard src="/team/3.png" alt="Image 3" description="GROW" />
+        <ImageCard src="/team/4.png" alt="Image 4" description="SHARE" />
+        <ImageCard src="/team/5.png" alt="Image 5" description="PARTICIPATE" />
       </ImageGrid>
 
       {/* Responsive Section */}
