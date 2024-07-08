@@ -12,9 +12,10 @@ import { MdArrowOutward } from "react-icons/md";
 
 const Footer = () => {
   const sections = [
-    { href: "#home", name: "Home" },
-    { href: "#event", name: "Event" },
-    { href: "#about", name: "About" },
+    { href: "/#home", name: "Home" },
+    { href: "/#timeline", name: "Timeline" },
+    { href: "/#showcase", name: "Showcase" },
+    { href: "/#faq", name: "FAQ" },
     { href: "/register", name: "Register" },
   ];
 
