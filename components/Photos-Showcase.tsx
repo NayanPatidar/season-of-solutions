@@ -1,7 +1,7 @@
 "use client";
 // Import necessary dependencies
 import React from 'react';
-import { CardContainer } from "./ui/Background-gradient";
+import { CardContainer } from "./ui/3d-card";
 import styled, { keyframes } from 'styled-components';
 import Image from 'next/image';
 
