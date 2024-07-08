@@ -1,33 +1,5 @@
-// "use client";
-// import React from 'react'
-// import { Faq } from './Faq'
-
-// export const FaqWrapper = () => {
-
-//     const faqs=[
-//         {
-//             question:" What is the Season of Solutions?",
-//             answer:"Season of Solutions is a month-long innovation challenge organized by the GDSC Club, designed to take participants through the journey of ideation to execution. Participants will brainstorm ideas, build prototypes, and present their final projects to a panel of judges."
-//         },
-//         {
-//             question:" What is the Season of Solutions?",
-//             answer:"Season of Solutions is a month-long innovation challenge organized by the GDSC Club, designed to take participants through the journey of ideation to execution. Participants will brainstorm ideas, build prototypes, and present their final projects to a panel of judges."
-//         },
-//         {
-//             question:" What is the Season of Solutions?",
-//             answer:"Season of Solutions is a month-long innovation challenge organized by the GDSC Club, designed to take participants through the journey of ideation to execution. Participants will brainstorm ideas, build prototypes, and present their final projects to a panel of judges."
-//         },
-//     ]
-//   return (
-//     <div>
-//         {faqs.map((faq,index) => (
-//                             <Faq ={faq.question} answer={faqs.answer}/>
-//                         ))}
-//     </div>
-//   )
-// }
-
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { Faq } from "./Faq";
 
 export const FaqWrapper = () => {
@@ -80,7 +52,11 @@ export const FaqWrapper = () => {
       ],
     },
   ];
-
+  
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  function handleclick(index:number){
+    setActiveIndex(activeIndex===index?null:index);
+  }
   return (
     <div id="faq" className="flex flex-col items-center  mb-32 p-8 sm:p-2">
       <h1 className="font-impact text-white text-lg mb-5 sm:mb-10 lg:mb-15 sm:text-3xl lg:text-5xl xl:text-7xl xl:mb-20">
@@ -91,6 +67,8 @@ export const FaqWrapper = () => {
           key={index}
           question={faq.question}
           answer={faq.answer}
+          isActive={activeIndex===index} 
+          onclick={()=>{handleclick(index)}}
           id={faq.id}
         />
       ))}
