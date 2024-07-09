@@ -7,13 +7,13 @@ import Image from "next/image";
 // Keyframes for animation
 const slideAnimation = keyframes`
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-120%);
   }
   50% {
     transform: translateX(100%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-120%);
   }
 `;
 
@@ -39,9 +39,14 @@ const TextContainer = styled.div<{ font?: string; justify?: string }>`
   // max-width: 90rem;
   text-transform: capitalize;
   text-align: ${({ justify }) => justify || "left"};
-  padding: 0 3rem; /* Adding padding here */
+  padding: 0 2rem; /* Adding padding here */
   @media (max-width: 768px) {
     font-size: 1rem;
+    padding: 0 1rem;
+  }
+  @media (max-width: 500px) {
+    font-size: 0.8rem;
+    margin: 0 50px;
   }
 `;
 
@@ -202,6 +207,13 @@ const AnimatedText = styled.div`
     width: 60px;
     height: 60px;
     margin: 0 10px; /* Adjust the margin as needed */
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 `;
 
