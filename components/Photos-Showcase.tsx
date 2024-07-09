@@ -1,8 +1,8 @@
 "use client";
-import React from 'react';
+import React from "react";
 import { CardContainer } from "./ui/3d-card";
-import styled, { keyframes } from 'styled-components';
-import Image from 'next/image';
+import styled, { keyframes } from "styled-components";
+import Image from "next/image";
 
 // Keyframes for animation
 const slideAnimation = keyframes`
@@ -36,10 +36,13 @@ const TextContainer = styled.div<{ font?: string; justify?: string }>`
   font-style: normal;
   line-height: 1.66;
   font-size: 1.4rem;
-  max-width: 80rem;
+  // max-width: 90rem;
   text-transform: capitalize;
-  text-align: ${({ justify }) => justify || 'left'};
-  padding: 0 1rem; /* Adding padding here */
+  text-align: ${({ justify }) => justify || "left"};
+  padding: 0 3rem; /* Adding padding here */
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ImageGrid = styled.div`
@@ -48,9 +51,9 @@ const ImageGrid = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  max-width: 80rem;
+  max-width: 90rem;
 
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.2rem;
@@ -81,7 +84,7 @@ const ImageContainer = styled.div`
     position: absolute;
     inset: -0.2rem;
     z-index: -1;
-    background: linear-gradient(var(--angle), #032146, #C3F2FF, #b00);
+    background: linear-gradient(var(--angle), #032146, #c3f2ff, #b00);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -94,7 +97,7 @@ const ImageContainer = styled.div`
     position: absolute;
     inset: -0.2rem;
     z-index: -1;
-    background: linear-gradient(var(--angle), #032146, #C3F2FF, #b00);
+    background: linear-gradient(var(--angle), #032146, #c3f2ff, #b00);
     filter: blur(1rem);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -137,11 +140,25 @@ const ImageContainer = styled.div`
 `;
 
 // Individual Image Components
-const ImageCard = ({ src, alt, description }: { src: string, alt: string, description: string }) => (
+const ImageCard = ({
+  src,
+  alt,
+  description,
+}: {
+  src: string;
+  alt: string;
+  description: string;
+}) => (
   <CardContainer>
     <ImageContainer>
       <div className="clickable-image">
-        <Image src={src} alt={alt} layout="responsive" width={100} height={100} />
+        <Image
+          src={src}
+          alt={alt}
+          layout="responsive"
+          width={100}
+          height={100}
+        />
         <div className="description">
           <p>{description}</p>
         </div>
@@ -177,14 +194,9 @@ const AnimatedText = styled.div`
   align-items: center;
   font-size: clamp(3rem, 10vw, 10rem);
   font-weight: normal;
-  font-family: 'Impact';
+  font-family: "Impact";
   color: #00b0ff;
   animation: ${slideAnimation} 10s linear infinite;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
 
   img {
     width: 60px;
@@ -197,28 +209,45 @@ const AnimatedText = styled.div`
 const Showcase = () => {
   return (
     <StyledShowcase>
-      <h1 className="font-impact text-white text-lg mb-5 sm:mb-10 lg:mb-15 sm:text-3xl lg:text-5xl xl:text-7xl xl:mb-20">SHOWCASE</h1>
-      <TextContainer  font="font-futura" justify="justify">
+      <h1 className="font-impact text-white text-3xl mb-5 sm:mb-10 lg:mb-15  lg:text-5xl xl:text-7xl xl:mb-20">
+        SHOWCASE
+      </h1>
+      <TextContainer font="font-futura" justify="justify">
         <span>
-          Welcome to the Google Developer Student Club (GDSC)! We are a vibrant and dynamic community of students who share a passion for technology, innovation, and collaboration. Our mission is to bridge the gap between theory and practice by providing hands-on learning opportunities and events that empower students to develop their technical skills and apply them to real-world challenges.
+          Welcome to the Google Developer Student Club (GDSC)! We are a vibrant
+          and dynamic community of students who share a passion for technology,
+          innovation, and collaboration. Our mission is to bridge the gap
+          between theory and practice by providing hands-on learning
+          opportunities and events that empower students to develop their
+          technical skills and apply them to real-world challenges.
           <br />
           <br />
-          At GDSC, we offer comprehensive workshops, coding sessions, and project-based learning to help students dive into the latest technologies and gain practical experience. Whether you're a beginner looking to start your journey in tech or an experienced coder aiming to expand your knowledge, our club offers a wide range of resources and activities to support your learning goals.
-          Together, let's shape the future of technology!
+          At GDSC, we offer comprehensive workshops, coding sessions, and
+          project-based learning to help students dive into the latest
+          technologies and gain practical experience. Whether you're a beginner
+          looking to start your journey in tech or an experienced coder aiming
+          to expand your knowledge, our club offers a wide range of resources
+          and activities to support your learning goals. Together, let's shape
+          the future of technology!
         </span>
       </TextContainer>
       <ImageGrid>
-        <ImageCard src="/team/1.svg" alt="Image 1" description="LEARN" />
-        <ImageCard src="/team/2.svg" alt="Image 2" description="CONNECT" />
-        <ImageCard src="/team/3.svg" alt="Image 3" description="GROW" />
-        <ImageCard src="/team/4.svg" alt="Image 4" description="SHARE" />
-        <ImageCard src="/team/5.svg" alt="Image 5" description="PARTICIPATE" />
+        <ImageCard src="/team/pic-1.svg" alt="Image 1" description="LEARN" />
+        <ImageCard src="/team/pic-2.svg" alt="Image 2" description="CONNECT" />
+        <ImageCard src="/team/pic-3.svg" alt="Image 3" description="GROW" />
+        <ImageCard src="/team/pic-4.svg" alt="Image 4" description="SHARE" />
+        <ImageCard
+          src="/team/pic-5.svg"
+          alt="Image 5"
+          description="PARTICIPATE"
+        />
       </ImageGrid>
 
       <ResponsiveFlexContainer>
         <AnimatedTextContainer>
           <AnimatedText>
-            LEARN <img src="/team/points.svg" alt="Subtract" /> CONNECT <img src="/team/points.svg" alt="Subtract" /> GROW
+            LEARN <img src="/team/points.svg" alt="Subtract" /> CONNECT{" "}
+            <img src="/team/points.svg" alt="Subtract" /> GROW
           </AnimatedText>
         </AnimatedTextContainer>
       </ResponsiveFlexContainer>
