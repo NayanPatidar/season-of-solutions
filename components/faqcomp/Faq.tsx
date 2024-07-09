@@ -27,7 +27,7 @@ export const Faq: React.FC<FaqProps> = ({
             onClick={onclick}
           >
             <h1
-              className={`text-lg sm:text-xl md:text-3xl  w-full ${
+              className={`text-md sm:text-xl md:text-3xl  w-full ${
                 isActive ? "border-b-2 border-slate-400" : ""
               }`}
             >
