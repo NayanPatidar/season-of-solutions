@@ -236,11 +236,11 @@ const Showcase = () => {
           <br />
           At GDSC, we offer comprehensive workshops, coding sessions, and
           project-based learning to help students dive into the latest
-          technologies and gain practical experience. Whether you're a beginner
-          looking to start your journey in tech or an experienced coder aiming
-          to expand your knowledge, our club offers a wide range of resources
-          and activities to support your learning goals. Together, let's shape
-          the future of technology!
+          technologies and gain practical experience. Whether you&apos;re a
+          beginner looking to start your journey in tech or an experienced coder
+          aiming to expand your knowledge, our club offers a wide range of
+          resources and activities to support your learning goals. Together,
+          let&apos;s shape the future of technology!
         </span>
       </TextContainer>
       <ImageGrid>
