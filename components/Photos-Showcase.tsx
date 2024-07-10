@@ -25,7 +25,7 @@ const StyledShowcase = styled.div`
   align-items: center;
   min-height: 100vh;
   background-color: #000;
-  padding: 2rem;
+  // padding: 2rem;
 `;
 const TextContainer = styled.div<{ font?: string; justify?: string }>`
   text-align: center;
@@ -46,7 +46,7 @@ const TextContainer = styled.div<{ font?: string; justify?: string }>`
   }
   @media (max-width: 500px) {
     font-size: 0.8rem;
-    margin: 0 50px;
+    margin: 0 20px;
   }
 `;
 
@@ -174,7 +174,7 @@ const ImageCard = ({
 
 const ResponsiveFlexContainer = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  // flex-wrap: nowrap;
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
@@ -190,18 +190,16 @@ const ResponsiveFlexContainer = styled.div`
 const AnimatedTextContainer = styled.div`
   display: flex;
   align-items: center;
-  overflow: hidden;
-  white-space: nowrap;
+  // overflow: hidden;
+  // white-space: nowrap;
 `;
 
 const AnimatedText = styled.div`
   display: flex;
   align-items: center;
-  font-size: clamp(3rem, 10vw, 10rem);
   font-weight: normal;
   font-family: "Impact";
   color: #00b0ff;
-  animation: ${slideAnimation} 10s linear infinite;
 
   img {
     width: 60px;
@@ -213,6 +211,12 @@ const AnimatedText = styled.div`
     img {
       width: 40px;
       height: 40px;
+    }
+  }
+  @media (max-width: 500px) {
+    img {
+      width: 30px;
+      height: 30px;
     }
   }
 `;
@@ -255,9 +259,9 @@ const Showcase = () => {
         />
       </ImageGrid>
 
-      <ResponsiveFlexContainer>
+      <ResponsiveFlexContainer className="mb-14">
         <AnimatedTextContainer>
-          <AnimatedText>
+          <AnimatedText className="text-2xl sm:text-5xl lg:text-7xl md:text-6xl text-wrap">
             LEARN <img src="/team/points.svg" alt="Subtract" /> CONNECT{" "}
             <img src="/team/points.svg" alt="Subtract" /> GROW
           </AnimatedText>
