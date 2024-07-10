@@ -149,13 +149,17 @@ const ImageCard = ({
   src,
   alt,
   description,
+  rotate,
 }: {
   src: string;
   alt: string;
   description: string;
+  rotate: number;
 }) => (
   <CardContainer>
-    <ImageContainer>
+    <ImageContainer
+      className={`${rotate < 0 ? `-rotate-20` : `rotate-20`} hover:z-[300000]`}
+    >
       <div className="clickable-image">
         <Image
           src={src}
@@ -248,13 +252,34 @@ const Showcase = () => {
         </span>
       </TextContainer>
       <ImageGrid>
-        <ImageCard src="/team/pic-1.svg" alt="Image 1" description="LEARN" />
-        <ImageCard src="/team/pic-2.svg" alt="Image 2" description="CONNECT" />
-        <ImageCard src="/team/pic-3.svg" alt="Image 3" description="GROW" />
-        <ImageCard src="/team/pic-4.svg" alt="Image 4" description="SHARE" />
+        <ImageCard
+          src="/team/pic-1.svg"
+          rotate={20}
+          alt="Image 1"
+          description="LEARN"
+        />
+        <ImageCard
+          src="/team/pic-2.svg"
+          rotate={-20}
+          alt="Image 2"
+          description="CONNECT"
+        />
+        <ImageCard
+          src="/team/pic-3.svg"
+          rotate={20}
+          alt="Image 3"
+          description="GROW"
+        />
+        <ImageCard
+          src="/team/pic-4.svg"
+          rotate={-20}
+          alt="Image 4"
+          description="SHARE"
+        />
         <ImageCard
           src="/team/pic-5.svg"
           alt="Image 5"
+          rotate={20}
           description="PARTICIPATE"
         />
       </ImageGrid>
