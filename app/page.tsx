@@ -6,7 +6,6 @@ import Script from "next/script";
 import Timeline from "@/components/Timeline";
 import Showcase from "@/components/Photos-Showcase";
 
-
 export default function Home() {
   return (
     <main className="relative flex bg-black flex-col items-center justify-center overflow-x-hidden mx-auto h-full w-full">
