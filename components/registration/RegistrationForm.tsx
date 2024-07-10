@@ -4,6 +4,7 @@ import { cn } from "@/utils/cn";
 
 const RegistrationForm = ({ className }: { className?: string }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [errorMsg, setErrorMsg] = useState("");
   const [formData, setFormData] = useState({
     member1Name: "",
     member1ID: "",
@@ -21,20 +22,71 @@ const RegistrationForm = ({ className }: { className?: string }) => {
     projectDescription: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleNext = () => {
     if (activeTab < 3) {
-      setActiveTab((prev) => prev + 1);
+      switch (activeTab) {
+        case 0:
+          if (
+            formData.member1Name != "" &&
+            formData.member1ID != "" &&
+            formData.member2Name != "" &&
+            formData.member2ID != ""
+          ) {
+            setErrorMsg("");
+            setActiveTab((prev) => prev + 1);
+          } else {
+            setErrorMsg("Fill in all the details ! !");
+          }
+          break;
+
+        case 1:
+          if (
+            formData.member1College != "" &&
+            formData.member1Degree != "" &&
+            formData.member2College != "" &&
+            formData.member2Degree != ""
+          ) {
+            setErrorMsg("");
+            setActiveTab((prev) => prev + 1);
+          } else {
+            setErrorMsg("Fill in all the details ! !");
+          }
+          break;
+
+        case 2:
+          if (
+            formData.member1Contact != "" &&
+            formData.member1Email != "" &&
+            formData.member2Contact != "" &&
+            formData.member2Email != ""
+          ) {
+            setErrorMsg("");
+            setActiveTab((prev) => prev + 1);
+          }
+      }
     } else {
-      console.log("Form Submitted:", formData);
+      if (formData.projectTheme != "" && formData.projectDescription != "") {
+        setErrorMsg("");
+        console.log("Form Submitted:", formData);
+      } else {
+        setErrorMsg("Fill in all the details !");
+      }
     }
   };
 
   return (
-    <div className={cn("bg-white p-6 rounded-lg shadow-md max-w-2xl w-full", className)}>
+    <div
+      className={cn(
+        "bg-white p-6 rounded-lg shadow-md max-w-2xl w-full",
+        className
+      )}
+    >
       <div className="relative mb-6">
         <div className="flex items-center justify-between">
           {[1, 2, 3, 4].map((step, index) => (
@@ -42,7 +94,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
               <div
                 className={cn(
                   "w-10 h-10 flex items-center justify-center rounded-full border-2",
-                  activeTab >= index ? "bg-brown-800 text-white border-brown-800" : "bg-gray-200 text-gray-600 border-gray-400"
+                  activeTab >= index
+                    ? "bg-brown-800 text-white border-brown-800"
+                    : "bg-gray-200 text-gray-600 border-gray-400"
                 )}
               >
                 {step}
@@ -66,11 +120,18 @@ const RegistrationForm = ({ className }: { className?: string }) => {
       <div>
         {activeTab === 0 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-brown-800">Registration details</h2>
-            <h4 className="text-slate-500">Please fill your information so we know you registered for the event.</h4>
+            <h2 className="text-xl font-bold text-brown-800">
+              Registration details
+            </h2>
+            <h4 className="text-slate-500">
+              Please fill your information so we know you registered for the
+              event.
+            </h4>
             <div className="flex gap-4">
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Member Name 1</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Member Name 1
+                </label>
                 <input
                   type="text"
                   name="member1Name"
@@ -81,7 +142,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">ID/Registration Number</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  ID/Registration Number
+                </label>
                 <input
                   type="text"
                   name="member1ID"
@@ -94,7 +157,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
             </div>
             <div className="flex gap-4">
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Member Name 2</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Member Name 2
+                </label>
                 <input
                   type="text"
                   name="member2Name"
@@ -105,7 +170,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">ID/Registration Number</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  ID/Registration Number
+                </label>
                 <input
                   type="text"
                   name="member2ID"
@@ -120,11 +187,18 @@ const RegistrationForm = ({ className }: { className?: string }) => {
         )}
         {activeTab === 1 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-brown-800">Registration details</h2>
-            <h4 className="text-slate-500">Please fill your information so we know you registered for the event.</h4>
+            <h2 className="text-xl font-bold text-brown-800">
+              Registration details
+            </h2>
+            <h4 className="text-slate-500">
+              Please fill your information so we know you registered for the
+              event.
+            </h4>
             <div className="flex gap-4">
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">College Name of Member 1</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  College Name of Member 1
+                </label>
                 <input
                   type="text"
                   name="member1College"
@@ -135,7 +209,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Degree / Dept / Year</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Degree / Dept / Year
+                </label>
                 <input
                   type="text"
                   name="member1Degree"
@@ -148,7 +224,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
             </div>
             <div className="flex gap-4">
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">College Name of Member 2</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  College Name of Member 2
+                </label>
                 <input
                   type="text"
                   name="member2College"
@@ -159,7 +237,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Degree / Dept / Year</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Degree / Dept / Year
+                </label>
                 <input
                   type="text"
                   name="member2Degree"
@@ -174,11 +254,18 @@ const RegistrationForm = ({ className }: { className?: string }) => {
         )}
         {activeTab === 2 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-brown-800">Registration details</h2>
-            <h4 className="text-slate-500">Please fill your information so we know you registered for the event.</h4>
+            <h2 className="text-xl font-bold text-brown-800">
+              Registration details
+            </h2>
+            <h4 className="text-slate-500">
+              Please fill your information so we know you registered for the
+              event.
+            </h4>
             <div className="flex gap-4">
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Contact Number of Member 1</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Contact Number of Member 1
+                </label>
                 <input
                   type="text"
                   name="member1Contact"
@@ -189,7 +276,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Email Address of Member 1</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Email Address of Member 1
+                </label>
                 <input
                   type="text"
                   name="member1Email"
@@ -202,7 +291,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
             </div>
             <div className="flex gap-4">
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Contact Number of Member 2</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Contact Number of Member 2
+                </label>
                 <input
                   type="text"
                   name="member2Contact"
@@ -213,7 +304,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div className="w-1/2">
-                <label className="block mb-2 text-sm font-medium text-brown-800">Email Address of Member 2</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Email Address of Member 2
+                </label>
                 <input
                   type="text"
                   name="member2Email"
@@ -228,10 +321,14 @@ const RegistrationForm = ({ className }: { className?: string }) => {
         )}
         {activeTab === 3 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-brown-800">Project Details</h2>
+            <h2 className="text-xl font-bold text-brown-800">
+              Project Details
+            </h2>
             <div className="flex flex-col gap-4">
               <div>
-                <label className="block mb-2 text-sm font-medium text-brown-800">Theme / Domain of Project</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Theme / Domain of Project
+                </label>
                 <input
                   type="text"
                   name="projectTheme"
@@ -242,7 +339,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium text-brown-800">Project Description</label>
+                <label className="block mb-2 text-sm font-medium text-brown-800">
+                  Project Description
+                </label>
                 <textarea
                   name="projectDescription"
                   value={formData.projectDescription}
@@ -256,7 +355,8 @@ const RegistrationForm = ({ className }: { className?: string }) => {
           </div>
         )}
       </div>
-      <div className="mt-6 flex justify-end">
+      <div className=" w-full mt-6 flex justify-between">
+        <span className=" text-red-600">{errorMsg}</span>
         <button
           onClick={handleNext}
           className="px-4 py-2 bg-brown-800 text-white rounded-lg"
