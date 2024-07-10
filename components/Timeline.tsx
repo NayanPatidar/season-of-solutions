@@ -3,6 +3,7 @@ import { url } from "inspector";
 import { TracingBeam } from "./ui/tracing-beam";
 import { ContainerScroll } from "./ui/container-scroll-animations";
 import useMediaQuery from "./hooks/useMediaQuery";
+import ImageWithHover from "./HoverImage";
 
 const Timeline = () => {
   const isSmallScreen = useMediaQuery(640);
@@ -101,25 +102,25 @@ const Timeline = () => {
           </div>
           <div className=" h-[16rem] sm:h-[45rem] flex flex-col justify-center items-center ">
             <ContainerScroll titleComponent={""} sideRotate={true}>
-              <img
-                className="w-[10rem] sm:w-[22rem]  sm:translate-x-0"
-                src="/Timeline/Thinkathon.svg"
+              <ImageWithHover
+                img="/Timeline/Thinkathon.svg"
+                hoverImg="/Timeline/Thinkathon-desc.svg"
               />
             </ContainerScroll>
           </div>
           <div className="h-[16rem] sm:h-[45rem] flex flex-col justify-center items-center">
             <ContainerScroll titleComponent={""} sideRotate={false}>
-              <img
-                className="w-[10rem] sm:w-[22rem] sm:translate-x-0"
-                src="/Timeline/Protowar.svg"
+              <ImageWithHover
+                img="/Timeline/Protowar.svg"
+                hoverImg="/Timeline/Protowar-desc.svg"
               />
             </ContainerScroll>
           </div>
           <div className="h-[16rem] sm:h-[45rem] flex flex-col justify-center items-center">
             <ContainerScroll titleComponent={""} sideRotate={true}>
-              <img
-                className="w-[10rem] sm:w-[22rem] sm:translate-x-0 "
-                src="/Timeline/LaunchPad.svg"
+              <ImageWithHover
+                img="/Timeline/Launchpad.svg"
+                hoverImg="/Timeline/Launchpad-desc.svg"
               />
             </ContainerScroll>
           </div>
