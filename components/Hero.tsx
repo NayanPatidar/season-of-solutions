@@ -16,7 +16,7 @@ const Hero = () => {
     >
       <Image
         src="/hero-bg-star.svg"
-        className="w-full object-cover absolute p-0 m-0 left-0 top-0"
+        className="w-full object-cover h-screen absolute p-0 m-0 left-0 top-0"
         alt="/"
         width={1000}
         height={1000}
