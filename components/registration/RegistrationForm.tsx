@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/utils/cn";
-import { db, auth } from '@/lib/firebase/init';
-import { collection, addDoc } from 'firebase/firestore';
+import { db } from "@/lib/firebase/init";
+import { collection, addDoc } from "firebase/firestore";
+import { useAuth } from "@/context/AuthContext";
+import { toast } from "react-toastify";
 
 const RegistrationForm = ({ className }: { className?: string }) => {
+  const { user, signInWithGooglePopup } = useAuth();
   const [activeTab, setActiveTab] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
   const [formData, setFormData] = useState({
@@ -82,7 +85,14 @@ const RegistrationForm = ({ className }: { className?: string }) => {
     } else {
       if (formData.projectTheme != "" && formData.projectDescription != "") {
         setErrorMsg("");
-        handleSubmit();
+        if (user) {
+          handleSubmit();
+          notify();
+          clearFormData();
+          reloadPage();
+        } else {
+          signInWithGooglePopup();
+        }
         console.log("Form Submitted:", formData);
       } else {
         setErrorMsg("Fill in all the details!");
@@ -91,8 +101,6 @@ const RegistrationForm = ({ className }: { className?: string }) => {
   };
 
   const handleSubmit = async (e?: React.FormEvent) => {
-    if(e)
-      e.preventDefault();
     try {
       const docRef = await addDoc(collection(db, "formData"), formData);
     } catch (e) {
@@ -100,6 +108,33 @@ const RegistrationForm = ({ className }: { className?: string }) => {
     }
   };
 
+  const notify = () => {
+    console.log("Notify Called");
+    toast.success("Form Submitted!");
+  };
+
+  const clearFormData = () => {
+    setFormData({
+      member1Name: "",
+      member1ID: "",
+      member2Name: "",
+      member2ID: "",
+      member1College: "",
+      member1Degree: "",
+      member2College: "",
+      member2Degree: "",
+      member1Contact: "",
+      member1Email: "",
+      member2Contact: "",
+      member2Email: "",
+      projectTheme: "",
+      projectDescription: "",
+    });
+  };
+
+  const reloadPage = () => {
+    window.location.reload();
+  };
 
   return (
     <div
