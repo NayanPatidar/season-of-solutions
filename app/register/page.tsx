@@ -1,15 +1,16 @@
 // app/page.tsx
 import RegistrationForm from "@/components/registration/RegistrationForm";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useAuth } from "@/context/AuthContext";
 
 
 export default function register() {
+
   return (
     <div className="relative min-h-screen bg-black p-10">
       {/* Background Gradient */}
       <div className="absolute z-50">
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
       <div className="absolute inset-0 z-0 bg-gradient-to-bl from-black to-transparent via-blue-800 opacity-50" />
       {/* Heading */}
