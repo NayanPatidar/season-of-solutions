@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/utils/cn";
-import { db } from '@/lib/firebase/init';
+import { db, auth } from '@/lib/firebase/init';
 import { collection, addDoc } from 'firebase/firestore';
 
 const RegistrationForm = ({ className }: { className?: string }) => {
@@ -57,20 +57,27 @@ const RegistrationForm = ({ className }: { className?: string }) => {
             setErrorMsg("");
             setActiveTab((prev) => prev + 1);
           } else {
-            setErrorMsg("Fill in all the details ! !");
+            setErrorMsg("Fill in all the details!");
           }
           break;
 
-        case 2:
-          if (
-            formData.member1Contact != "" &&
-            formData.member1Email != "" &&
-            formData.member2Contact != "" &&
-            formData.member2Email != ""
-          ) {
-            setErrorMsg("");
-            setActiveTab((prev) => prev + 1);
-          }
+          case 2:
+            const contactNumber = /^\d{10}$/;
+    
+            if (
+              formData.member1Contact !== "" &&
+              formData.member1Email !== "" &&
+              formData.member2Contact !== "" &&
+              formData.member2Email !== "" &&
+              contactNumber.test(formData.member1Contact) &&
+              contactNumber.test(formData.member2Contact)
+            ) {
+              setErrorMsg("");
+              setActiveTab((prev) => prev + 1);
+            } else {
+              setErrorMsg("Fill in all the details with valid contact numbers!");
+            }
+            break;
       }
     } else {
       if (formData.projectTheme != "" && formData.projectDescription != "") {
@@ -97,7 +104,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "bg-white p-6 rounded-lg shadow-md max-w-2xl w-full",
+        "bg-white p-6 rounded-lg shadow-md max-w-2xl w-full z-20",
         className
       )}
     >
@@ -281,7 +288,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   Contact Number of Member 1
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   name="member1Contact"
                   value={formData.member1Contact}
                   onChange={handleChange}
@@ -294,7 +301,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   Email Address of Member 1
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="member1Email"
                   value={formData.member1Email}
                   onChange={handleChange}
@@ -309,12 +316,13 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   Contact Number of Member 2
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   name="member2Contact"
                   value={formData.member2Contact}
                   onChange={handleChange}
                   className="w-full p-2 border rounded-lg bg-gray-100"
                   placeholder="Contact Number"
+                  required
                 />
               </div>
               <div className="w-1/2">
@@ -322,7 +330,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   Email Address of Member 2
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="member2Email"
                   value={formData.member2Email}
                   onChange={handleChange}
