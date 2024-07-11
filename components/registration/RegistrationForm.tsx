@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/utils/cn";
+import { db } from '@/lib/firebase/init';
+import { collection, addDoc } from 'firebase/firestore';
 
 const RegistrationForm = ({ className }: { className?: string }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -41,7 +43,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
             setErrorMsg("");
             setActiveTab((prev) => prev + 1);
           } else {
-            setErrorMsg("Fill in all the details ! !");
+            setErrorMsg("Fill in all the details!");
           }
           break;
 
@@ -73,12 +75,24 @@ const RegistrationForm = ({ className }: { className?: string }) => {
     } else {
       if (formData.projectTheme != "" && formData.projectDescription != "") {
         setErrorMsg("");
+        handleSubmit();
         console.log("Form Submitted:", formData);
       } else {
-        setErrorMsg("Fill in all the details !");
+        setErrorMsg("Fill in all the details!");
       }
     }
   };
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if(e)
+      e.preventDefault();
+    try {
+      const docRef = await addDoc(collection(db, "formData"), formData);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
 
   return (
     <div
