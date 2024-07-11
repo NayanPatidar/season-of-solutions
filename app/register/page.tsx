@@ -1,8 +1,6 @@
 // app/page.tsx
 import RegistrationForm from "@/components/registration/RegistrationForm";
 import Footer from "@/components/Footer";
-import { useAuth } from "@/context/AuthContext";
-
 
 export default function register() {
 

@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +18,6 @@ const Header = () => {
     { href: "/#timeline", name: "Timeline" },
     { href: "/#showcase", name: "Showcase" },
     { href: "/#faq", name: "FAQ" },
-    { href: "/register", name: "Register" },
   ];
 
   const signInWithGoogle = async () => {
@@ -51,7 +49,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="w-full left-0 mb-10 p-[2px] z-10 bg-black fixed top-5 text-white rounded-full grad  flex items-center ">
+      <div className="w-full left-0 mb-10 p-[2px] z-20 bg-black fixed top-5 text-white rounded-full grad  flex items-center ">
         <div className="w-full inset-0 bg-black top-0 text-white border rounded-full p-4 flex items-center justify-between ">
           <Image
             src="/logo.svg"
@@ -133,7 +131,10 @@ const Header = () => {
                 </div>
               ) : (
                 <div>
-                  <span className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300">
+                  <span
+                    className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300"
+                    onClick={signInWithGoogle}
+                  >
                     Login
                   </span>
                 </div>
