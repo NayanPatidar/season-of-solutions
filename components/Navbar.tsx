@@ -1,13 +1,18 @@
+
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import "./nav.css";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "@/lib/firebase/init";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
 
-const Navbar = () => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const { user, loading, signInWithGooglePopup, signOutUser } = useAuth();
 
   const sections = [
     { href: "/#home", name: "Home" },
@@ -16,6 +21,15 @@ const Navbar = () => {
     { href: "/#faq", name: "FAQ" },
     { href: "/register", name: "Register" },
   ];
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithGooglePopup();
+      console.log("User signed in");
+    } catch (error: any) {
+      console.error("Error signing in with Google:", error.message);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -37,7 +51,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="left-[12px] w-[calc(100%-24px)] mb-10 p-[2px] z-[9999999] bg-black fixed top-5 text-white rounded-full grad flex items-center ">
+      <div className="w-full left-0 mb-10 p-[2px] z-10 bg-black fixed top-5 text-white rounded-full grad  flex items-center ">
         <div className="w-full inset-0 bg-black top-0 text-white border rounded-full p-4 flex items-center justify-between ">
           <Image
             src="/logo.svg"
@@ -74,16 +88,29 @@ const Navbar = () => {
             }`}
           >
             {sections.map((link) => (
-              <Link key={link.href} href={link.href} className="under">
-                {link.name}
-              </Link>
+              <div key={link.href} className="under">
+                <Link href={link.href}>{link.name}</Link>
+              </div>
             ))}
+            {user ? (
+              <div style={{ cursor: "pointer" }}>
+                <Link href={"/dashboard"} style={{ cursor: "pointer" }}>
+                  Dashboard
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <span style={{ cursor: "pointer" }} onClick={signInWithGoogle}>
+                  Login
+                </span>
+              </div>
+            )}
           </div>
 
           {isOpen && (
             <div
               ref={dropdownRef}
-              className="absolute top-[100px] left-[10px] w-[calc(100%-20px)] border text-white bg-black rounded-md shadow-lg z-20 lg:hidden"
+              className="absolute top-16 left-0 w-full border text-white bg-black rounded-md shadow-lg z-20 lg:hidden"
             >
               {sections.map((link) => (
                 <Link
@@ -95,6 +122,22 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              {user ? (
+                <div>
+                  <Link
+                    className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300"
+                    href={"/dashboard"}
+                  >
+                    Dashboard
+                  </Link>
+                </div>
+              ) : (
+                <div>
+                  <span className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300">
+                    Login
+                  </span>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -103,4 +146,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

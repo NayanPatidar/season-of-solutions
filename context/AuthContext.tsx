@@ -1,7 +1,10 @@
+"use client";
 import { auth } from "@/lib/firebase/init";
 import {
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   User,
   UserCredential,
@@ -13,11 +16,12 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
+import nookies from "nookies";
 
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  signin: (email: string, password: string) => Promise<UserCredential>;
+  signInWithGooglePopup: () => Promise<User | null>;
   signOutUser: () => Promise<void>;
 };
 
@@ -28,8 +32,8 @@ interface Props {
 const AuthContext = createContext<AuthContextType | undefined>({
   user: null,
   loading: true,
-  signin: async (email: string, password: string) => {
-    throw new Error("Sign In Function not initiated");
+  signInWithGooglePopup: async () => {
+    throw new Error("SignInWithGooglePopup Function not initized");
   },
   signOutUser: async () => {
     throw new Error("SignOut Function not initized");
@@ -41,25 +45,27 @@ export function AuthProvider({ children }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const token = await user.getIdToken();
+        nookies.set(undefined, "token", token, { path: "/" });
+        setUser(user);
+      } else {
+        nookies.set(undefined, 'token', '', { path: '/' });
+        setUser(null);
+      }
       setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
+  const provider = new GoogleAuthProvider();
 
-  const signin = async (
-    email: string,
-    password: string
-  ): Promise<UserCredential> => {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    setUser(userCredential.user);
-    return userCredential;
+  const signInWithGooglePopup = async () => {
+    const result = await signInWithPopup(auth, provider);
+    const signedInUser = result.user;
+    setUser(signedInUser);
+    return signedInUser;
   };
 
   const signOutUser = async (): Promise<void> => {
@@ -68,14 +74,16 @@ export function AuthProvider({ children }: Props) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, signin, signOutUser }}>
+    <AuthContext.Provider
+      value={{ user, loading, signInWithGooglePopup, signOutUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
 
 export const useAuth = (): AuthContextType => {
-  const context = React.useContext(AuthContext);
+  const context = useContext(AuthContext);
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
