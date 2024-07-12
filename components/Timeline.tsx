@@ -119,7 +119,7 @@ const Timeline = () => {
           <div className="h-[16rem] sm:h-[45rem] flex flex-col justify-center items-center">
             <ContainerScroll titleComponent={""} sideRotate={true}>
               <ImageWithHover
-                img="/Timeline/Launchpad.svg"
+                img="/Timeline/LaunchPad.svg"
                 hoverImg="/Timeline/Launchpad-desc.svg"
               />
             </ContainerScroll>
