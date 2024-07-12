@@ -89,7 +89,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
           handleSubmit();
           notify();
           clearFormData();
-          reloadPage();
+          setTimeout(() => {
+            setActiveTab(0);
+          }, 2000);
         } else {
           signInWithGooglePopup();
         }
@@ -130,10 +132,6 @@ const RegistrationForm = ({ className }: { className?: string }) => {
       projectTheme: "",
       projectDescription: "",
     });
-  };
-
-  const reloadPage = () => {
-    window.location.reload();
   };
 
   return (
