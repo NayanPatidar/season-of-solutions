@@ -17,6 +17,7 @@ import React, {
   ReactNode,
 } from "react";
 import nookies from "nookies";
+import { useRouter } from "next/navigation";
 
 type AuthContextType = {
   user: User | null;
@@ -43,6 +44,7 @@ const AuthContext = createContext<AuthContextType | undefined>({
 export function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const route = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -51,7 +53,7 @@ export function AuthProvider({ children }: Props) {
         nookies.set(undefined, "token", token, { path: "/" });
         setUser(user);
       } else {
-        nookies.set(undefined, 'token', '', { path: '/' });
+        nookies.set(undefined, "token", "", { path: "/" });
         setUser(null);
       }
       setLoading(false);
@@ -62,15 +64,31 @@ export function AuthProvider({ children }: Props) {
   const provider = new GoogleAuthProvider();
 
   const signInWithGooglePopup = async () => {
-    const result = await signInWithPopup(auth, provider);
-    const signedInUser = result.user;
-    setUser(signedInUser);
-    return signedInUser;
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const signedInUser = result.user;
+
+      if (signedInUser) {
+        setUser(signedInUser);
+        route.push("/register");
+        return signedInUser;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+      return null;
+    }
   };
 
   const signOutUser = async (): Promise<void> => {
-    await signOut(auth);
-    setUser(null);
+    try {
+      await signOut(auth);
+      setUser(null);
+      route.push('/');
+    } catch (error) {
+      console.error("Error during sign out:", error);
+    }
   };
 
   return (

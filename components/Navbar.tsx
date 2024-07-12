@@ -29,6 +29,15 @@ const Header = () => {
     }
   };
 
+  const signOut = async () => {
+    try {
+      await signOutUser();
+      console.log("User Logged Out");
+    } catch (error: any) {
+      console.error("Error logging out with Google:", error.message);
+    }
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -50,7 +59,6 @@ const Header = () => {
   return (
     <>
       <div className="left-[12px] w-[calc(100%-24px)] mb-10 p-[2px] z-[9999999] bg-black fixed top-5 text-white rounded-full grad flex items-center ">
-
         <div className="w-full inset-0 bg-black top-0 text-white rounded-full p-4 flex items-center justify-between ">
           <Image
             src="/logo.svg"
@@ -93,9 +101,14 @@ const Header = () => {
             ))}
             {user ? (
               <div style={{ cursor: "pointer" }}>
-                <Link href={"/dashboard"} style={{ cursor: "pointer" }}>
+                {/* <Link href={"/dashboard"} style={{ cursor: "pointer" }}>
                   Dashboard
-                </Link>
+                </Link> */}
+                <div style={{ cursor: "pointer" }}>
+                  <div style={{ cursor: "pointer" }} onClick={signOut}>
+                    Signout
+                  </div>
+                </div>
               </div>
             ) : (
               <div>
@@ -123,12 +136,17 @@ const Header = () => {
               ))}
               {user ? (
                 <div>
-                  <Link
+                  {/* <Link
                     className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300"
                     href={"/dashboard"}
                   >
                     Dashboard
-                  </Link>
+                  </Link> */}
+                  <div style={{ cursor: "pointer" }}>
+                    <div className="font-montserrat block px-4 py-2 hover:text-black hover:bg-gray-300" style={{ cursor: "pointer" }} onClick={signOut}>
+                      Signout
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div>
