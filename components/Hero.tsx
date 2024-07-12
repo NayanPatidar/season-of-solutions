@@ -4,11 +4,21 @@ import { MdArrowOutward } from "react-icons/md";
 import Image from "next/image";
 import { Meteors } from "./ui/meteors";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { useAuth } from "@/context/AuthContext";
 
 const words =
   "a month-long innovation challenge, designed to take participants through the journey of ideation to execution.";
 
 const Hero = () => {
+  const { user, signInWithGooglePopup } = useAuth();
+  const NavigateToRegister = () => {
+    if (user) {
+      window.location.href = "/register";
+    } else {
+      signInWithGooglePopup();
+    }
+  };
+
   return (
     <div
       id="home"
@@ -37,7 +47,7 @@ const Hero = () => {
       <TextGenerateEffect words={words}></TextGenerateEffect>
       <div className="flex justify-center md:justify-end mt-10 md:mr-28 text-xl">
         <button
-          onClick={() => (window.location.href = "/register")}
+          onClick={NavigateToRegister}
           className="p-[2px] absolute mr-auto"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#da5c35] to-[#3590bb] rounded-full" />
