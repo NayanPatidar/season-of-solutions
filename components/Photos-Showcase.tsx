@@ -228,71 +228,87 @@ const AnimatedText = styled.div`
 // Showcase component
 const Showcase = () => {
   return (
-    <StyledShowcase id="showcase">
-      <h1 className="font-impact text-white text-3xl mb-5 sm:mb-10 lg:mb-15  lg:text-5xl xl:text-7xl xl:mb-20">
-        SHOWCASE
-      </h1>
-      <TextContainer font="font-futura" justify="justify">
-        <span>
-          Welcome to the Google Developer Student Club (GDSC)! We are a vibrant
-          and dynamic community of students who share a passion for technology,
-          innovation, and collaboration. Our mission is to bridge the gap
-          between theory and practice by providing hands-on learning
-          opportunities and events that empower students to develop their
-          technical skills and apply them to real-world challenges.
-          <br />
-          <br />
-          At GDSC, we offer comprehensive workshops, coding sessions, and
-          project-based learning to help students dive into the latest
-          technologies and gain practical experience. Whether you&apos;re a
-          beginner looking to start your journey in tech or an experienced coder
-          aiming to expand your knowledge, our club offers a wide range of
-          resources and activities to support your learning goals. Together,
-          let&apos;s shape the future of technology!
-        </span>
-      </TextContainer>
-      <ImageGrid>
-        <ImageCard
-          src="/team/pic-1.svg"
-          rotate={20}
-          alt="Image 1"
-          description="LEARN"
-        />
-        <ImageCard
-          src="/team/pic-2.svg"
-          rotate={-20}
-          alt="Image 2"
-          description="CONNECT"
-        />
-        <ImageCard
-          src="/team/pic-3.svg"
-          rotate={20}
-          alt="Image 3"
-          description="GROW"
-        />
-        <ImageCard
-          src="/team/pic-4.svg"
-          rotate={-20}
-          alt="Image 4"
-          description="SHARE"
-        />
-        <ImageCard
-          src="/team/pic-5.svg"
-          alt="Image 5"
-          rotate={20}
-          description="PARTICIPATE"
-        />
-      </ImageGrid>
+    <>
+      <StyledShowcase id="showcase">
+        <h1 className="font-impact text-white text-3xl mb-5 sm:mb-10 lg:mb-15  lg:text-5xl xl:text-7xl xl:mb-20">
+          SHOWCASE
+        </h1>
+        <TextContainer font="font-futura" justify="justify">
+          <span>
+            Welcome to the Google Developer Student Club (GDSC)! We are a vibrant
+            and dynamic community of students who share a passion for technology,
+            innovation, and collaboration. Our mission is to bridge the gap
+            between theory and practice by providing hands-on learning
+            opportunities and events that empower students to develop their
+            technical skills and apply them to real-world challenges.
+            <br />
+            <br />
+            At GDSC, we offer comprehensive workshops, coding sessions, and
+            project-based learning to help students dive into the latest
+            technologies and gain practical experience. Whether you&apos;re a
+            beginner looking to start your journey in tech or an experienced coder
+            aiming to expand your knowledge, our club offers a wide range of
+            resources and activities to support your learning goals. Together,
+            let&apos;s shape the future of technology!
+          </span>
+        </TextContainer>
+        <ImageGrid>
+          <ImageCard
+            src="/team/pic-1.svg"
+            rotate={20}
+            alt="Image 1"
+            description="LEARN"
+          />
+          <ImageCard
+            src="/team/pic-2.svg"
+            rotate={-20}
+            alt="Image 2"
+            description="CONNECT"
+          />
+          <ImageCard
+            src="/team/pic-3.svg"
+            rotate={20}
+            alt="Image 3"
+            description="GROW"
+          />
+          <ImageCard
+            src="/team/pic-4.svg"
+            rotate={-20}
+            alt="Image 4"
+            description="SHARE"
+          />
+          <ImageCard
+            src="/team/pic-5.svg"
+            alt="Image 5"
+            rotate={20}
+            description="PARTICIPATE"
+          />
+        </ImageGrid>
 
-      <ResponsiveFlexContainer className="mb-14">
-        <AnimatedTextContainer>
-          <AnimatedText className="text-2xl sm:text-5xl lg:text-7xl md:text-6xl text-wrap">
-            LEARN <img src="/team/points.svg" alt="Subtract" /> CONNECT{" "}
-            <img src="/team/points.svg" alt="Subtract" /> GROW
-          </AnimatedText>
-        </AnimatedTextContainer>
-      </ResponsiveFlexContainer>
-    </StyledShowcase>
+        <ResponsiveFlexContainer className="mb-14">
+          <AnimatedTextContainer>
+            <AnimatedText className="text-2xl sm:text-5xl lg:text-7xl md:text-6xl text-wrap">
+              LEARN <img src="/team/points.svg" alt="Subtract" /> CONNECT{" "}
+              <img src="/team/points.svg" alt="Subtract" /> GROW
+            </AnimatedText>
+          </AnimatedTextContainer>
+        </ResponsiveFlexContainer>
+      </StyledShowcase>
+
+      <div className="p-5 mb-20">
+      <h1 className="font-bebasneu font-semibold text-white text-center mb-5 text-[25px] sm:text-[40px] md:text-[50px] sm:mb-10 lg:mb-15 xl:mb-20">
+        In Collaboration With
+      </h1>
+      <div className="flex pb-5 flex-col gap-10 lg:flex-row mt-10 items-center justify-center border-2 rounded-xl bg-gradient-to-r from-black to-gray-800 opacity-80 p-10 md:py-20 md:px-36 lg:py-24 lg:px-24 xl:py-24 xl:px-64">
+        <div className="flex justify-center items-center w-full">
+          <Image src="/iic-logo.png" alt="IIC Logo" width={400} height={400} />
+        </div>
+        <div className="flex justify-center items-center w-full">
+          <Image src="/srm-logo.svg" alt="SRM Logo" width={400} height={400} />
+        </div>
+      </div>
+    </div>
+    </>
   );
 };
 
