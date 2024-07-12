@@ -55,7 +55,7 @@ const Timeline = () => {
                 <div className=" w-2/3 sm:w-1/2 flex flex-col items-start overflow-hidden pl-1">
                   <div className="TimelineDates text-xs sm:text-5xl h-[16rem] sm:h-[45rem] flex flex-col justify-center pl-2 ">
                     <span>THINKATHON</span>
-                    <span>JULY 10</span>
+                    <span>JULY 12</span>
                   </div>
                   <div className="TimelineDates text-xs sm:text-5xl h-[16rem] sm:h-[45rem] flex flex-col justify-center pl-2 ">
                     <span>PROTOWAR</span>
@@ -63,7 +63,7 @@ const Timeline = () => {
                   </div>
                   <div className="TimelineDates text-xs sm:text-5xl h-[16rem] sm:h-[45rem] flex flex-col justify-center pl-2">
                     <span>LAUNCH PAD</span>
-                    <span>AUGUST 15</span>
+                    <span>AUGUST 9 - 15</span>
                   </div>
                 </div>
               </TracingBeam>
@@ -71,7 +71,7 @@ const Timeline = () => {
               <div className=" w-2/3 sm:w-1/2 flex flex-col items-start overflow-hidden pl-1">
                 <div className="TimelineDates text-xs sm:text-5xl h-[16rem] sm:h-[45rem] flex flex-col justify-center pl-2 ">
                   <span>THINKATHON</span>
-                  <span>JULY 10</span>
+                  <span>JULY 12</span>
                 </div>
                 <div className="TimelineDates text-xs sm:text-5xl h-[16rem] sm:h-[45rem] flex flex-col justify-center pl-2 ">
                   <span>PROTOWAR</span>
@@ -79,7 +79,7 @@ const Timeline = () => {
                 </div>
                 <div className="TimelineDates text-xs sm:text-5xl h-[16rem] sm:h-[45rem] flex flex-col justify-center pl-2">
                   <span>LAUNCH PAD</span>
-                  <span>AUGUST 15</span>
+                  <span>AUGUST 9 - 15</span>
                 </div>
               </div>
             )}
@@ -119,7 +119,7 @@ const Timeline = () => {
           <div className="h-[16rem] sm:h-[45rem] flex flex-col justify-center items-center">
             <ContainerScroll titleComponent={""} sideRotate={true}>
               <ImageWithHover
-                img="/Timeline/Launchpad.svg"
+                img="/Timeline/LaunchPad.svg"
                 hoverImg="/Timeline/Launchpad-desc.svg"
               />
             </ContainerScroll>
@@ -129,26 +129,26 @@ const Timeline = () => {
       <div className="flex flex-col my-10 md:my-20 ml-20 md:ml-0 px-5  overflow-hidden  md:flex-row gap-10 flex-wrap justify-center items-start md:items-center max-w-[250px] md:max-w-full text-white py-12">
         <div className="text-start gap-3 flex max-w-32 justify-center items-center">
           <h1 className="md:text-9xl text-7xl font-bold">4</h1>
-          <p className="md:text-lg text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
-            Impact Speakers
+          <p className="md:text-xl text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
+            Weeks
           </p>
         </div>
         <div className="text-start gap-3 flex max-w-52 justify-center items-center">
           <h1 className="md:text-9xl text-7xl font-bold">15</h1>
-          <p className="md:text-lg text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
-            Days of full Inspiration
+          <p className="md:text-xl text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
+            days of ideation
           </p>
         </div>
         <div className="text-start gap-3 flex max-w-32 justify-center items-center">
           <h1 className="md:text-9xl text-7xl font-bold">1</h1>
-          <p className="md:text-lg text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
-            Unique workshop
+          <p className="md:text-xl text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
+            month of innovation
           </p>
         </div>
         <div className="text-start gap-3 flex  max-w-72 justify-center items-center">
           <h1 className="md:text-9xl text-7xl font-bold">4x</h1>
-          <p className="md:text-lg text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
-            Opportunities with Industries expert
+          <p className="md:text-xl text-base font-medium bg-gradient-to-r text-transparent bg-clip-text from-[#2e87cb] via-[#5EC6DE] to-[#53F1E8]">
+            opportunities with Industry Experts
           </p>
         </div>
       </div>

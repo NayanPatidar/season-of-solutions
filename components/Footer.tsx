@@ -48,27 +48,26 @@ const Footer = () => {
                 Join Our Community to Get Further Updates
               </h2>
               <div className="flex justify-center text-lg mb-12">
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://gdsc.community.dev/srm-institute-of-science-and-technology-ramapuram-chennai-india/",
-                    "_blank"
-                  )
-                }
-                className="relative p-[2px] bg-gradient-to-r from-[#FD7E47] via-[#7DBFC5] to-[#41CDF6] rounded-full overflow-hidden group"
-              >
-                <div className="px-7 py-3 bg-black rounded-[30px] relative group transition duration-300 ease-in-out text-white hover:bg-transparent hover:text-[1.2rem]">
-                  Join Dashboard
-                  <MdArrowOutward className="absolute right-2 top-2 group-hover:animate-aurora" />
-                </div>
-              </button>
-
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://gdsc.community.dev/srm-institute-of-science-and-technology-ramapuram-chennai-india/",
+                      "_blank"
+                    )
+                  }
+                  className="relative p-[2px] bg-gradient-to-r from-[#FD7E47] via-[#7DBFC5] to-[#41CDF6] rounded-full overflow-hidden group"
+                >
+                  <div className="px-7 py-3 bg-black rounded-[30px] relative group transition duration-300 ease-in-out text-white hover:bg-transparent hover:text-[1.2rem]">
+                    Join Dashboard
+                    <MdArrowOutward className="absolute right-2 top-2 group-hover:animate-aurora" />
+                  </div>
+                </button>
               </div>
             </div>
 
             <div className="mx-auto lg:mx-0 flex flex-col justify-center items-center">
               <h2 className="text-2xl font-bold mt-4">SOCIALS</h2>
-              <div className=" flex flex-wrap justify-center gap-4 lg:space-x-6 mt-2 lg:flex-nowrap">
+              <div className=" flex flex-wrap justify-center gap-4 lg:space-x-2 mt-2 lg:flex-nowrap">
                 <a href="https://www.instagram.com/gdscsrmrmp/">
                   <FaSquareInstagram color="#00b0e7" size={35} />
                 </a>
@@ -87,8 +86,10 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col pb-5 mt-10 items-center justify-center md:flex-col">
-            <Image src="/logo.svg" alt="Logo" width={300} height={300} />
+          <div className="flex pb-5 flex-col gap-10 lg:flex-row mt-10 items-center justify-around ">
+            <Image src="/srm-logo.svg" alt="Logo" width={250} height={250} />
+            <Image src="/logo.svg" alt="Logo" width={350} height={300} />
+            <Image src="/iic-logo.png" alt="Logo" width={230} height={250} />
           </div>
         </div>
       </div>
