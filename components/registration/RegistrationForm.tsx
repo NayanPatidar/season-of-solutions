@@ -96,7 +96,6 @@ const RegistrationForm = ({ className }: { className?: string }) => {
         } else {
           signInWithGooglePopup();
         }
-        console.log("Form Submitted:", formData);
       } else {
         setErrorMsg("Fill in all the details!");
       }
@@ -119,8 +118,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
   };
 
   const notify = () => {
-    console.log("Notify Called");
-    toast.success("Form Submitted!");
+    toast.success("Successfully Registered !");
   };
 
   const clearFormData = () => {
