@@ -63,7 +63,9 @@ export const Faq: React.FC<FaqProps> = ({
               )}
               {id === 6 && (
                 <li className="inline-block text-[#41CDF6]">
-                  <a href="mailto:someone@example.com">someone@example.com</a>
+                  <a href="mailto:someone@example.com">
+                    contact@gdscsrmrmp.club
+                  </a>
                 </li>
               )}
             </ul>

@@ -42,7 +42,12 @@ export const FaqWrapper = () => {
     {
       id: 6,
       question: "How can I contact the organizers for more information?",
-      answer: ["For any queries, please contact us:"],
+      answer: [
+        "For any queries, please contact us:",
+        "Ritesh Kumaran S",
+        "II CSE K",
+        "+91 6383 458 849",
+      ],
     },
     {
       id: 7,
