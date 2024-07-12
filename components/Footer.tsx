@@ -87,9 +87,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex pb-5 flex-col gap-10 lg:flex-row mt-10 items-center justify-around ">
-            <Image src="/srm-logo.svg" alt="Logo" width={250} height={250} />
             <Image src="/logo.svg" alt="Logo" width={350} height={300} />
-            <Image src="/iic-logo.png" alt="Logo" width={230} height={250} />
           </div>
         </div>
       </div>
