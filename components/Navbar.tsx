@@ -50,6 +50,7 @@ const Header = () => {
   return (
     <>
       <div className="left-[12px] w-[calc(100%-24px)] mb-10 p-[2px] z-[9999999] bg-black fixed top-5 text-white rounded-full grad flex items-center ">
+
         <div className="w-full inset-0 bg-black top-0 text-white rounded-full p-4 flex items-center justify-between ">
           <Image
             src="/logo.svg"
@@ -108,7 +109,7 @@ const Header = () => {
           {isOpen && (
             <div
               ref={dropdownRef}
-              className="absolute top-16 left-0 w-full border text-white bg-black rounded-md shadow-lg z-20 lg:hidden"
+              className="absolute top-[80px] left-[10px] w-[calc(100%-20px)] border text-white bg-black rounded-md shadow-lg z-20 lg:hidden"
             >
               {sections.map((link) => (
                 <Link

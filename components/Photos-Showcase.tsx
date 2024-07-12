@@ -158,7 +158,7 @@ const ImageCard = ({
 }) => (
   <CardContainer>
     <ImageContainer
-      className={`${rotate < 0 ? `-rotate-20` : `rotate-20`} hover:z-[300000]`}
+      className={`${rotate < 0 ? `-rotate-20` : `rotate-20`} hover:z-50`}
     >
       <div className="clickable-image">
         <Image
@@ -228,7 +228,7 @@ const AnimatedText = styled.div`
 // Showcase component
 const Showcase = () => {
   return (
-    <StyledShowcase>
+    <StyledShowcase id="showcase">
       <h1 className="font-impact text-white text-3xl mb-5 sm:mb-10 lg:mb-15  lg:text-5xl xl:text-7xl xl:mb-20">
         SHOWCASE
       </h1>

@@ -40,7 +40,7 @@ const Hero = () => {
           onClick={() => (window.location.href = "/register")}
           className="p-[2px] absolute mr-auto"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#e16f4c] to-[#2a829f] rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#da5c35] to-[#3590bb] rounded-full" />
           <div className="px-8 py-4  bg-black rounded-[30px]  relative group transition duration-300 ease-in-out text-white hover:bg-transparent hover:text-[1.5rem]">
             Register now
             <MdArrowOutward className="absolute right-2 top-2  group-hover:animate-aurora" />
