@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-black  opacity-100 text-white w-full px-2 sm:px-6 pb-4">
+    <footer className="bg-gradient-to-r from-black  opacity-100 text-white w-full px-2 sm:px-6 pb-4 mt-10">
       <div className="relative">
         <Image
           src="/footer-bg.svg"
@@ -30,12 +30,12 @@ const Footer = () => {
           height={100}
         />
 
-        <div className="container  absolute mx-auto inset-0 opacity-50 bg-blue-500 rounded-sm blur-[50px]"></div>
-        <div className="bg-black  tracking-wider relative border-2 rounded-xl opacity-80 backdrop-blur-md p-5">
+        <div className="container absolute mx-auto inset-0 opacity-50 bg-blue-500 rounded-sm blur-[50px]"></div>
+        <div className="bg-black tracking-wider relative border-2 rounded-xl opacity-80 backdrop-blur-md p-5">
           <div className="font-impact  relative  flex  justify-center flex-wrap gap-3 lg:justify-between">
-            <div className="py-5 opacity-100 my-auto text-start tracking-wide flex flex-col space-y-2 md:items-start ml-5">
+            <div className="py-5 opacity-100 my-auto text-start tracking-wide flex flex-col space-y-2 md:items-start ml-0 sm:ml-5">
               <h2 className="text-start text-2xl font-bold">SITE MAP</h2>
-              <div className="text-start flex flex-col gap-3 tracking-wide">
+              <div className="text-center sm:text-start flex flex-col gap-3 tracking-wide">
                 {sections.map((link) => (
                   <Link key={link.href} href={link.href}>
                     {link.name}
@@ -48,27 +48,27 @@ const Footer = () => {
                 Join Our Community to Get Further Updates
               </h2>
               <div className="flex justify-center text-lg mb-12">
-                <button
-                  onClick={() =>
-                    window.open(
-                      "https://gdsc.community.dev/srm-institute-of-science-and-technology-ramapuram-chennai-india/",
-                      "_blank"
-                    )
-                  }
-                  className="p-[2px] absolute mr-auto"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FD7E47] via-[#7DBFC5] to-[#41CDF6] rounded-full" />
-                  <div className="px-7 py-3 bg-black rounded-[30px]  relative group transition duration-300 ease-in-out text-white hover:bg-transparent hover:text-[1.2rem]">
-                    Join Dashboard
-                    <MdArrowOutward className="absolute right-2 top-2  group-hover:animate-aurora" />
-                  </div>
-                </button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://gdsc.community.dev/srm-institute-of-science-and-technology-ramapuram-chennai-india/",
+                    "_blank"
+                  )
+                }
+                className="relative p-[2px] bg-gradient-to-r from-[#FD7E47] via-[#7DBFC5] to-[#41CDF6] rounded-full overflow-hidden group"
+              >
+                <div className="px-7 py-3 bg-black rounded-[30px] relative group transition duration-300 ease-in-out text-white hover:bg-transparent hover:text-[1.2rem]">
+                  Join Dashboard
+                  <MdArrowOutward className="absolute right-2 top-2 group-hover:animate-aurora" />
+                </div>
+              </button>
+
               </div>
             </div>
 
             <div className="mx-auto lg:mx-0 flex flex-col justify-center items-center">
               <h2 className="text-2xl font-bold mt-4">SOCIALS</h2>
-              <div className=" flex flex-wrap md:justify-center space-x-4 mt-2 lg:flex-nowrap">
+              <div className=" flex flex-wrap justify-center gap-4 lg:space-x-6 mt-2 lg:flex-nowrap">
                 <a href="https://www.instagram.com/gdscsrmrmp/">
                   <FaSquareInstagram color="#00b0e7" size={35} />
                 </a>
