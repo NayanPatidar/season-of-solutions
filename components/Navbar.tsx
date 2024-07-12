@@ -50,11 +50,11 @@ const Header = () => {
   return (
     <>
       <div className="left-[12px] w-[calc(100%-24px)] mb-10 p-[2px] z-[9999999] bg-black fixed top-5 text-white rounded-full grad flex items-center ">
-        {" "}
-        <div className="w-full inset-0 bg-black top-0 text-white border rounded-full p-4 flex items-center justify-between ">
+
+        <div className="w-full inset-0 bg-black top-0 text-white rounded-full p-4 flex items-center justify-between ">
           <Image
             src="/logo.svg"
-            className="w-48 md:w-72 lg:w-72 xl:w-80"
+            className="w-56 md:w-60 lg:w-60 xl:w-64"
             alt="GDSC Logo"
             width={300}
             height={10}

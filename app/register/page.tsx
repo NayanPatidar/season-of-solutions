@@ -12,14 +12,15 @@ export default function register() {
       </div>
       <div className="absolute inset-0 z-0 bg-gradient-to-bl from-black to-transparent via-blue-800 opacity-50" />
       {/* Heading */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen  mt-16 md:mt-2 lg:mt-4 xl:mt-0">
+        <h1 className="bg-clip-text bg-gradient-to-r from-[#FEFEFE] to-[#8B8B8B] font-righteous text-center text-4xl md:text-5xl font-bold text-gray-300 mb-6 px-4">
+          SEASON OF SOLUTIONS
+        </h1>
 
-      <h1 className="bg-clip-text bg-gradient-to-r from-[#FEFEFE] to-[#8B8B8B] font-righteous absolute md:text-nowrap  top-40 left-1/2 transform -translate-x-1/2 text-5xl font-bold text-gray-300 z-10">
-        SEASON OF SOLUTIONS
-      </h1>
-
-      {/* Centered Registration Form */}
-      <div className="flex mt-10 md:mt-0 items-center justify-center min-h-screen">
-        <RegistrationForm className="absolute z-10" />
+        {/* Centered Registration Form */}
+        <div className="w-full max-w-2xl p-4 bg-white rounded-lg shadow-md">
+          <RegistrationForm />
+        </div>
       </div>
       <Footer />
     </div>
