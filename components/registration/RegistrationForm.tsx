@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { cn } from "@/utils/cn";
 import { db } from "@/lib/firebase/init";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { useAuth } from "@/context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -103,8 +103,9 @@ const RegistrationForm = ({ className }: { className?: string }) => {
   };
 
   const handleSubmit = async (e?: React.FormEvent) => {
+    let email = user?.email;
     try {
-      const docRef = await addDoc(collection(db, "formData"), formData);
+      const docRef = await setDoc(doc(db, "formData", `${email}`), formData);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
