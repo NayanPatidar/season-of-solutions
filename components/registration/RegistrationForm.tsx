@@ -60,20 +60,27 @@ const RegistrationForm = ({ className }: { className?: string }) => {
             setErrorMsg("");
             setActiveTab((prev) => prev + 1);
           } else {
-            setErrorMsg("Fill in all the details ! !");
+            setErrorMsg("Fill in all the details!");
           }
           break;
 
-        case 2:
-          if (
-            formData.member1Contact != "" &&
-            formData.member1Email != "" &&
-            formData.member2Contact != "" &&
-            formData.member2Email != ""
-          ) {
-            setErrorMsg("");
-            setActiveTab((prev) => prev + 1);
-          }
+          case 2:
+            const contactNumber = /^\d{10}$/;
+    
+            if (
+              formData.member1Contact !== "" &&
+              formData.member1Email !== "" &&
+              formData.member2Contact !== "" &&
+              formData.member2Email !== "" &&
+              contactNumber.test(formData.member1Contact) &&
+              contactNumber.test(formData.member2Contact)
+            ) {
+              setErrorMsg("");
+              setActiveTab((prev) => prev + 1);
+            } else {
+              setErrorMsg("Fill in all the details with valid contact numbers!");
+            }
+            break;
       }
     } else {
       if (formData.projectTheme != "" && formData.projectDescription != "") {
@@ -130,7 +137,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "bg-white p-6 rounded-lg shadow-md max-w-2xl w-full",
+        "bg-white p-6 rounded-lg shadow-md mx-auto max-w-2xl w-full",
         className
       )}
     >
@@ -174,8 +181,8 @@ const RegistrationForm = ({ className }: { className?: string }) => {
               Please fill your information so we know you registered for the
               event.
             </h4>
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Member Name 1
                 </label>
@@ -188,7 +195,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   placeholder="Your Name"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   ID/Registration Number
                 </label>
@@ -202,8 +209,8 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Member Name 2
                 </label>
@@ -216,7 +223,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   placeholder="Your Teammate Name"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   ID/Registration Number
                 </label>
@@ -241,8 +248,8 @@ const RegistrationForm = ({ className }: { className?: string }) => {
               Please fill your information so we know you registered for the
               event.
             </h4>
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   College Name of Member 1
                 </label>
@@ -255,7 +262,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   placeholder="College Name"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Degree / Dept / Year
                 </label>
@@ -269,8 +276,8 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   College Name of Member 2
                 </label>
@@ -283,7 +290,7 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   placeholder="College Name"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Degree / Dept / Year
                 </label>
@@ -308,13 +315,13 @@ const RegistrationForm = ({ className }: { className?: string }) => {
               Please fill your information so we know you registered for the
               event.
             </h4>
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Contact Number of Member 1
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   name="member1Contact"
                   value={formData.member1Contact}
                   onChange={handleChange}
@@ -322,12 +329,12 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                   placeholder="Contact Number"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Email Address of Member 1
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="member1Email"
                   value={formData.member1Email}
                   onChange={handleChange}
@@ -336,26 +343,27 @@ const RegistrationForm = ({ className }: { className?: string }) => {
                 />
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Contact Number of Member 2
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   name="member2Contact"
                   value={formData.member2Contact}
                   onChange={handleChange}
                   className="w-full p-2 border rounded-lg bg-gray-100"
                   placeholder="Contact Number"
+                  required
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 <label className="block mb-2 text-sm font-medium text-brown-800">
                   Email Address of Member 2
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="member2Email"
                   value={formData.member2Email}
                   onChange={handleChange}
